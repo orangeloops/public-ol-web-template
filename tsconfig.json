@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["esnext", "dom"],
+    "sourceMap": true,
+    "allowJs": false,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "assets/*": ["assets/*"]
+    },
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "types": ["jest", "node", "reflect-metadata"],
+    "typeRoots": ["node_modules/@types", "typings"],
+    "allowUnreachableCode": true,
+    "checkJs": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "pretty": true,
+    "skipLibCheck": true,
+    "traceResolution": false,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/typescript"
+  },
+  "include": [
+    "typings/**/*",
+    "src/**/*",
+    "node_modules/@types/jest/index.d.ts"
+  ],
+  "exclude": [".storybook", ".storybook_build", ".vscode", "build", "config", "node_modules", "public", "scripts"]
+}

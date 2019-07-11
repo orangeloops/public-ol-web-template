@@ -1,0 +1,39 @@
+@import "~assets/stylesheets/base/_common.scss";
+
+.container {
+  @include flex(column);
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.companyContainer {
+  @include flex(column);
+  align-items: center;
+
+  > * {
+    margin: 10px 0;
+  }
+}
+
+.text {
+  color: $ol-cloudyGrayColor;
+  text-align: center;
+
+  &.bold {
+    font-weight: bold;
+  }
+}
+
+.companyIcon {
+  @include imageBackground-2x("~assets/images/common/Common-companyIcon-2x.png");
+  height: 50px;
+  width: 130px;
+  cursor: pointer;
+  background: {
+    image: url("~assets/images/common/Common-companyIcon.png");
+    repeat: no-repeat;
+  }
+}

@@ -1,0 +1,72 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+/*html {
+  box-sizing: border-box;
+}*/
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+/*
+*, *::before, *::after {
+  box-sizing: inherit;
+} 
+*/
+
+/**
+ * Basic styles for links
+ */
+/*
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  @include on-event {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+*/
+
+html {
+  -ms-overflow-style: -ms-autohiding-scrollbar !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  position: fixed;
+  width: 100% !important;
+}
+
+#root {
+  height: 100%;
+}
+
+img {
+  vertical-align: baseline;
+}
+
+input {
+  &::-webkit-credentials-auto-fill-button,
+  &::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.standalone * {
+  -webkit-touch-callout: none;
+}

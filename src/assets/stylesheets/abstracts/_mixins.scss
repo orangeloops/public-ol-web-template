@@ -1,0 +1,323 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+/* MIXINS */
+
+@mixin image-2x($image, $width, $height: $width) {
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    @if $width == null {
+    }
+    else {
+      @if $width == $height {
+        background-size: $height;
+      }
+
+      else {
+        background-size: $width $height;
+      }
+    }
+    background-repeat: no-repeat;
+  }
+}
+
+@mixin imageBackground-2x($image) {
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@mixin buttonHoverEffect($bg, $color) {
+  /*
+  background: $bg;
+  */
+  &:hover {
+    background: darken($bg, 5%);
+    transition: all 0.3s ease;
+    color: $color;
+  }
+}
+
+@mixin hoverEffect() {
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@mixin border($width, $color) {
+  border: {
+    width: $width;
+    style: solid;
+    color: $color;
+  }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-radiusBottom($radius) {
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-radiusTop($radius) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin grid() {
+  display: grid;
+  > * {
+    min-height: 0;
+    min-width: 0;
+  }
+}
+
+/// Responsive breakpoint manager
+/// @access publicHome
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(type-of($raw-query) == "string", unquote($raw-query), inspect($raw-query));
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+// Bootstrap v4 needed mixins
+@mixin hover-focus {
+  &:focus,
+  &:hover {
+    @content;
+  }
+}
+
+@mixin nav-divider($color: #e5e5e5) {
+  height: 1px;
+  margin: (1rem / 2) 0;
+  overflow: hidden;
+  background-color: $color;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin form-control-focus($color: #66afe9) {
+  $color-rgba: rgba(red($color), green($color), blue($color), 0.6);
+  &:focus {
+    border-color: $color;
+    outline: 0;
+    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color-rgba);
+  }
+}
+
+@mixin placeholder($color: #66afe9) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+
+  // Internet Explorer 10+
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  // Safari and Chrome
+  &::placeholder {
+    color: $color;
+  }
+}
+
+@mixin placeholder-color($color) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+
+  // Internet Explorer 10+
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  // Safari and Chrome
+  &::placeholder {
+    color: $color;
+  }
+}
+
+@mixin animated-background($width, $height, $animation-duration) {
+  animation-duration: $animation-duration;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: $width $height;
+  height: $height;
+  position: relative;
+}
+
+// animated-background mixin helper
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// http://aslanbakan.com/en/blog/browser-and-device-specific-css-styles-with-sass-and-less-mixins
+@mixin browser($browsers) {
+  @each $browser in $browsers {
+    html[data-browser*="#{$browser}"] & {
+      @content;
+    }
+  }
+}
+
+@mixin ellipsisMultiline($linesCount: 1) {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  -webkit-line-clamp: $linesCount;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @supports not (-webkit-line-clamp: $linesCount) {
+    height: 1em * 1.2 * $linesCount; /* Fallback for non-webkit */
+    line-height: 1.2;
+  }
+
+  @include browser(Trident) {
+    white-space: nowrap;
+  }
+}
+
+@mixin ellipsis() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin image-background-cover() {
+  object-fit: cover;
+  background: {
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+}
+
+//HIDE ON MOBILE
+@mixin hide-on-mobile() {
+  @include respond-to("xs") {
+    display: none;
+  }
+}
+
+@mixin v-spacing($spacing) {
+  > :not(:last-child) {
+    margin-bottom: $spacing;
+  }
+}
+
+@mixin h-spacing($spacing) {
+  > :not(:last-child) {
+    margin-right: $spacing;
+  }
+}
+
+@keyframes spin-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
