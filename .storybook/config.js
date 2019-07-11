@@ -10,7 +10,7 @@ addParameters({
     theme: create({
       base: "light",
       brandTitle: "Phoenix Web",
-      brandUrl: "https://wwww.orangeloops.com/web",
+      brandUrl: "https://www.orangeloops.com",
       brandImage: null,
     }),
     sortStoriesByKind: true,

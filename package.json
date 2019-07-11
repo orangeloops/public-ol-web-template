@@ -1,8 +1,8 @@
 {
   "name": "Phoenix",
   "version": "1.0.0",
-  "private": true,
-  "homepage": "https://wwww.orangeloops.com/web",
+  "private": false,
+  "homepage": "https://www.orangeloops.com",
   "devDependencies": {
     "@babel/cli": "7.5.0",
     "@babel/core": "7.5.4",
