@@ -1,0 +1,108 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+$ol-message-content-color: $ol-bodyThree-color !default;
+$ol-message-content-font-family: $ol-bodyThree-font-family !default;
+$ol-message-content-font-size: $ol-bodyThree-font-size !default;
+$ol-message-content-font-weight: $ol-bodyThree-font-weight !default;
+$ol-message-content-text-transform: $ol-bodyThree-text-transform !default;
+
+.ol-marginSmall {
+  margin: 10px;
+}
+
+.ol-pointer {
+  cursor: pointer;
+}
+
+.ol-noLinkDecoration {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.ol-noLinkDecoration:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ol-flex {
+  display: flex;
+
+  &.center {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.ol-whiteSpace {
+  white-space: pre-wrap;
+}
+
+.ol-positionRight {
+  margin-left: auto;
+  display: block !important;
+}
+
+.ol-fullHeight {
+  height: 100%;
+}
+
+.ol-spin-container {
+  @include flex();
+  justify-content: center;
+  align-items: center;
+  color: $ol-primaryColor;
+}
+
+.ol-spin {
+  color: $ol-primaryColor;
+  font-size: 30px;
+}
+
+.ol-message-wrapper {
+  @include flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ol-message-content {
+  flex-grow: 1;
+  color: $ol-message-content-color;
+  font: {
+    family: $ol-message-content-font-family;
+    size: $ol-message-content-font-size;
+    weight: $ol-message-content-font-weight;
+  }
+  text-transform: $ol-message-content-text-transform;
+}
+
+.ol-message-close-icon {
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.ol-app-main-container {
+  @include flex(column);
+  height: 100%;
+}
+
+.ol-app-switch-container {
+  position: relative;
+  @include flex(column);
+  height: 100%;
+  min-height: 0;
+
+  > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ol-app-message-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: auto;
+  }
+}

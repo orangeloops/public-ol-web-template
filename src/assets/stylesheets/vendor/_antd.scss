@@ -1,0 +1,982 @@
+// region Input
+$ol-input-border-color: $ol-blackColor !default;
+$ol-input-border-radius: 0px !default;
+$ol-input-border-width: 1px !default;
+$ol-input-box-shadow: none !default;
+$ol-input-color: $ol-bodyOne-color !default;
+$ol-input-focus-border-bottom-color: $ol-primaryColor !default;
+$ol-input-focus-border-bottom-width: 4px !default;
+$ol-input-focus-border-color: $ol-input-border-color !default;
+$ol-input-focus-border-left-color: $ol-input-border-color !default;
+$ol-input-focus-border-left-width: $ol-input-border-width !default;
+$ol-input-focus-border-radius: 0px !default;
+$ol-input-focus-border-right-color: $ol-input-border-color !default;
+$ol-input-focus-border-right-width: $ol-input-border-width !default;
+$ol-input-focus-border-top-color: $ol-input-border-color !default;
+$ol-input-focus-border-top-width: $ol-input-border-width !default;
+$ol-input-focus-border-width: $ol-input-border-width !default;
+$ol-input-focus-box-shadow: none !default;
+$ol-input-font-family: $ol-bodyOne-font-family !default;
+$ol-input-font-size: $ol-bodyOne-font-size !default;
+$ol-input-font-weight: $ol-bodyOne-font-weight !default;
+$ol-input-height: 50px !default;
+$ol-input-hover-border-color: $ol-input-border-color !default;
+$ol-input-hover-border-radius: 0px !default;
+$ol-input-hover-border-width: $ol-input-border-width !default;
+$ol-input-padding: 0 $ol-padding-lg !default;
+$ol-input-placeholder-color: $ol-cloudyGrayColor !default;
+$ol-input-text-transform: $ol-bodyOne-text-transform !default;
+$ol-input-placeholder-text-transform: none !default;
+$ol-input-transition: border-bottom-width ease 0.2s, border-bottom-color ease 0.2s !default;
+$ol-input-background-color: transparent !default;
+// endregion
+
+// region Textarea
+$ol-textarea-padding: $ol-padding-sm !default;
+$ol-textarea-transition: border-bottom-width ease 0.2s, border-bottom-color ease 0.2s !default;
+$ol-textarea-border-color: $ol-input-border-color !default;
+$ol-textarea-border-radius: $ol-input-border-radius !default;
+$ol-textarea-border-width: $ol-input-border-width !default;
+$ol-textarea-focus-color: $ol-bodyOne-color !default;
+$ol-textarea-focus-border-color: $ol-input-border-color !default;
+$ol-textarea-focus-border-radius: $ol-input-focus-border-radius !default;
+$ol-textarea-focus-border-width: $ol-input-border-width !default;
+$ol-textarea-focus-box-shadow: $ol-input-focus-box-shadow !default;
+$ol-textarea-font-family: $ol-input-font-family !default;
+$ol-textarea-font-size: $ol-input-font-size !default;
+$ol-textarea-font-weight: $ol-input-font-weight !default;
+$ol-textarea-hover-border-color: $ol-input-hover-border-color !default;
+$ol-textarea-hover-border-radius: $ol-input-hover-border-radius !default;
+$ol-textarea-hover-border-width: $ol-input-hover-border-width !default;
+// endregion
+
+// region Select
+$ol-select-background-color: transparent !default;
+$ol-select-border-color: $ol-input-border-color !default;
+$ol-select-border-radius: $ol-input-border-radius !default;
+$ol-select-border-width: $ol-input-border-width !default;
+$ol-select-border-right-width: $ol-select-border-width !default;
+$ol-select-color: $ol-bodyOne-color !default;
+$ol-select-font-family: $ol-bodyOne-font-family !default;
+$ol-select-font-size: $ol-bodyOne-font-size !default;
+$ol-select-font-weight: $ol-bodyOne-font-weight !default;
+
+$ol-select-dropdown-background-color: $ol-whiteColor !default;
+$ol-select-dropdown-border-radius: 0 !default;
+$ol-select-dropdown-border: 1px $ol-blackColor solid !default;
+
+$ol-select-dropdown-item-background-color-hover: $ol-primaryColor-light !default;
+$ol-select-dropdown-item-background-color-selected: $ol-primaryColor !default;
+$ol-select-dropdown-item-background-color: transparent !default;
+$ol-select-dropdown-item-color-hover: $ol-whiteColor !default;
+$ol-select-dropdown-item-color-selected: $ol-whiteColor !default;
+$ol-select-dropdown-item-color: $ol-bodyOne-color !default;
+$ol-select-dropdown-item-padding: $ol-padding-sm !default;
+$ol-select-dropdown-item-separator-border: $ol-select-dropdown-border !default;
+$ol-select-dropdown-item-text-transform: $ol-bodyOne-text-transform !default;
+// endregion
+
+// region Dropdown
+$ol-dropdown-trigger-background-color: transparent !default;
+$ol-dropdown-trigger-border-radius: 0 !default;
+$ol-dropdown-trigger-border: none !default;
+$ol-dropdown-trigger-color: $ol-bodyOne-color !default;
+$ol-dropdown-trigger-font-family: $ol-bodyOne-font-family !default;
+$ol-dropdown-trigger-font-size: $ol-bodyOne-font-size !default;
+$ol-dropdown-trigger-font-weight: $ol-bodyOne-font-weight !default;
+$ol-dropdown-trigger-text-transform: $ol-bodyOne-text-transform !default;
+
+$ol-dropdown-menu-background-color: $ol-whiteColor !default;
+$ol-dropdown-menu-border-color: $ol-blackColor !default;
+$ol-dropdown-menu-border-radius: 0 !default;
+$ol-dropdown-menu-border-width: 1px !default;
+$ol-dropdown-menu-font-family: $ol-bodyThree-font-family !default;
+$ol-dropdown-menu-font-size: $ol-bodyThree-font-size !default;
+$ol-dropdown-menu-font-weight: $ol-bodyThree-font-weight !default;
+$ol-dropdown-menu-padding: 0 !default;
+
+$ol-dropdown-menu-item-background-color: transparent !default;
+$ol-dropdown-menu-item-color: $ol-blackColor !default;
+$ol-dropdown-menu-item-font-family: inherit !default;
+$ol-dropdown-menu-item-font-size: inherit !default;
+$ol-dropdown-menu-item-font-weight: inherit !default;
+$ol-dropdown-menu-item-hover-background-color: $ol-primaryColor !default;
+$ol-dropdown-menu-item-hover-color: $ol-whiteColor !default;
+$ol-dropdown-menu-item-padding: $ol-padding-sm !default;
+$ol-dropdown-menu-item-separator-border: $ol-select-dropdown-border !default;
+// endregion
+
+// region DatePicker
+$ol-date-picker-input-border-color: $ol-input-border-color !default;
+$ol-date-picker-input-border-radius: $ol-input-border-radius !default;
+$ol-date-picker-input-border-width: $ol-input-border-width !default;
+$ol-date-picker-input-clear-button-background-color: $ol-whiteColor !default;
+$ol-date-picker-input-clear-button-color: var(--ol-primaryColor) !default;
+$ol-date-picker-input-focus-border-color: $ol-input-focus-border-color !default;
+$ol-date-picker-input-focus-border-radius: $ol-input-focus-border-radius !default;
+$ol-date-picker-input-focus-border-width: $ol-input-focus-border-width !default;
+$ol-date-picker-input-font-family: $ol-font-family-primary !default;
+$ol-date-picker-input-height: $ol-input-height !default;
+$ol-date-picker-input-hover-border-color: $ol-input-hover-border-color !default;
+$ol-date-picker-input-hover-border-radius: $ol-input-hover-border-radius !default;
+$ol-date-picker-input-hover-border-width: $ol-input-hover-border-width !default;
+
+$ol-date-picker-header-action-color: $ol-link-color !default;
+$ol-date-picker-header-action-hover-color: $ol-link-hover-color !default;
+
+$ol-date-picker-calendar-item-background-color: transparent !default;
+$ol-date-picker-calendar-item-color: $ol-link-color !default;
+$ol-date-picker-calendar-item-hover-background-color: transparent !default;
+$ol-date-picker-calendar-item-hover-color: $ol-link-hover-color !default;
+$ol-date-picker-calendar-item-selected-background-color: $ol-primaryColor !default;
+$ol-date-picker-calendar-item-selected-color: $ol-whiteColor !default;
+$ol-date-picker-calendar-item-selected-hover-background-color: $ol-primaryColor !default;
+$ol-date-picker-calendar-item-selected-hover-color: $ol-whiteColor !default;
+
+$ol-date-picker-calendar-date-background-color: $ol-date-picker-calendar-item-background-color !default;
+$ol-date-picker-calendar-date-color: $ol-date-picker-calendar-item-color !default;
+$ol-date-picker-calendar-date-disabled-background-color: $ol-lightGrayColor !default;
+$ol-date-picker-calendar-date-disabled-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-calendar-date-disabled-hover-background-color: $ol-lightGrayColor !default;
+$ol-date-picker-calendar-date-disabled-hover-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-calendar-date-hover-background-color: $ol-date-picker-calendar-item-hover-background-color !default;
+$ol-date-picker-calendar-date-hover-color: $ol-date-picker-calendar-item-hover-color !default;
+$ol-date-picker-calendar-date-last-month-background-color: transparent !default;
+$ol-date-picker-calendar-date-last-month-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-calendar-date-last-month-hover-background-color: $ol-lightGrayColor !default;
+$ol-date-picker-calendar-date-last-month-hover-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-calendar-date-next-month-background-color: transparent !default;
+$ol-date-picker-calendar-date-next-month-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-calendar-date-next-month-hover-background-color: $ol-lightGrayColor !default;
+$ol-date-picker-calendar-date-next-month-hover-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-calendar-date-selected-background-color: $ol-date-picker-calendar-item-selected-background-color !default;
+$ol-date-picker-calendar-date-selected-color: $ol-date-picker-calendar-item-selected-color !default;
+$ol-date-picker-calendar-date-selected-hover-background-color: $ol-date-picker-calendar-item-selected-hover-background-color !default;
+$ol-date-picker-calendar-date-selected-hover-color: $ol-date-picker-calendar-item-selected-hover-color !default;
+$ol-date-picker-calendar-date-today-background-color: transparent !default;
+$ol-date-picker-calendar-date-today-border-color: var(--ol-primaryColor) !default;
+$ol-date-picker-calendar-date-today-border-radius: 3px !default;
+$ol-date-picker-calendar-date-today-border-width: 1px !default;
+$ol-date-picker-calendar-date-today-color: var(--ol-primaryColor) !default;
+
+$ol-date-picker-calendar-month-background-color: $ol-date-picker-calendar-item-background-color !default;
+$ol-date-picker-calendar-month-color: $ol-date-picker-calendar-item-color !default;
+$ol-date-picker-calendar-month-hover-background-color: $ol-date-picker-calendar-item-hover-background-color !default;
+$ol-date-picker-calendar-month-hover-color: $ol-date-picker-calendar-item-hover-color !default;
+$ol-date-picker-calendar-month-selected-background-color: $ol-date-picker-calendar-item-selected-background-color !default;
+$ol-date-picker-calendar-month-selected-color: $ol-date-picker-calendar-item-selected-color !default;
+$ol-date-picker-calendar-month-selected-hover-background-color: $ol-date-picker-calendar-item-selected-hover-background-color !default;
+$ol-date-picker-calendar-month-selected-hover-color: $ol-date-picker-calendar-item-selected-hover-color !default;
+
+$ol-date-picker-calendar-year-background-color: $ol-date-picker-calendar-item-background-color !default;
+$ol-date-picker-calendar-year-color: $ol-date-picker-calendar-item-color !default;
+$ol-date-picker-calendar-year-hover-background-color: $ol-date-picker-calendar-item-hover-background-color !default;
+$ol-date-picker-calendar-year-hover-color: $ol-date-picker-calendar-item-hover-color !default;
+$ol-date-picker-calendar-year-selected-background-color: $ol-date-picker-calendar-item-selected-background-color !default;
+$ol-date-picker-calendar-year-selected-color: $ol-date-picker-calendar-item-selected-color !default;
+$ol-date-picker-calendar-year-selected-hover-background-color: $ol-date-picker-calendar-item-selected-hover-background-color !default;
+$ol-date-picker-calendar-year-selected-hover-color: $ol-date-picker-calendar-item-selected-hover-color !default;
+
+$ol-date-picker-calendar-decade-background-color: $ol-date-picker-calendar-item-background-color !default;
+$ol-date-picker-calendar-decade-color: $ol-date-picker-calendar-item-color !default;
+$ol-date-picker-calendar-decade-hover-background-color: $ol-date-picker-calendar-item-hover-background-color !default;
+$ol-date-picker-calendar-decade-hover-color: $ol-date-picker-calendar-item-hover-color !default;
+$ol-date-picker-calendar-decade-selected-background-color: $ol-date-picker-calendar-item-selected-background-color !default;
+$ol-date-picker-calendar-decade-selected-color: $ol-date-picker-calendar-item-selected-color !default;
+$ol-date-picker-calendar-decade-selected-hover-background-color: $ol-date-picker-calendar-item-selected-hover-background-color !default;
+$ol-date-picker-calendar-decade-selected-hover-color: $ol-date-picker-calendar-item-selected-hover-color !default;
+
+$ol-date-picker-calendar-footer-btn-padding: 8px 12px !default;
+
+$ol-date-picker-calendar-footer-extra-margin: 0 !default;
+$ol-date-picker-calendar-footer-extra-padding: 0 0 8px !default;
+
+$ol-date-picker-today-button-color: $ol-link-color !default;
+$ol-date-picker-today-button-disabled-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-today-button-disabled-hover-color: $ol-cloudyGrayColor !default;
+$ol-date-picker-today-button-hover-color: $ol-link-hover-color !default;
+$ol-date-picker-today-button-margin: 0 !default;
+// endregion
+
+// region TimePicker
+$ol-time-picker-input-border-color: $ol-input-border-color !default;
+$ol-time-picker-input-border-radius: 0px !default;
+$ol-time-picker-input-border-width: $ol-input-border-width !default;
+$ol-time-picker-input-focus-border-color: $ol-input-border-color !default;
+$ol-time-picker-input-focus-border-radius: 0px !default;
+$ol-time-picker-input-focus-border-width: $ol-input-border-width !default;
+$ol-time-picker-input-hover-border-color: $ol-input-border-color !default;
+$ol-time-picker-input-hover-border-radius: 0px !default;
+$ol-time-picker-input-hover-border-width: $ol-input-border-width !default;
+
+$ol-time-picker-item-background-color: transparent !default;
+$ol-time-picker-item-color: inherit !default;
+$ol-time-picker-item-hover-background-color: $ol-primaryColor-light !default;
+$ol-time-picker-item-hover-color: $ol-whiteColor !default;
+$ol-time-picker-item-selected-background-color: $ol-primaryColor !default;
+$ol-time-picker-item-selected-color: $ol-whiteColor !default;
+// endregion
+
+// region Drawer
+$ol-drawer-content-background-color: $ol-whiteColor !default;
+// endregion
+
+// region Checkbox
+$ol-checkbox-after-border-color: $ol-whiteColor !default;
+$ol-checkbox-background-color: $ol-whiteColor !default;
+$ol-checkbox-border-color: $ol-cloudyGrayColor !default;
+$ol-checkbox-checked-background-color: $ol-primaryColor !default;
+$ol-checkbox-checked-border-color: $ol-primaryColor !default;
+$ol-checkbox-checked-focus-border-color: $ol-infoColor-dark !default;
+$ol-checkbox-focus-border-color: $ol-primaryColor !default;
+$ol-checkbox-hover-border-color: $ol-primaryColor !default;
+// endregion
+
+// region Message
+$ol-message-custom-content-font-family: $ol-bodyThree-font-family !default;
+$ol-message-custom-content-font-size: $ol-bodyThree-font-size !default;
+$ol-message-custom-content-font-weight: $ol-bodyThree-font-weight !default;
+$ol-message-custom-content-text-transform: initial !default;
+$ol-message-error-background-color: $ol-errorColor !default;
+$ol-message-error-color: darken($ol-errorColor, 60%) !default;
+$ol-message-error-filter: none !default;
+$ol-message-info-background-color: $ol-infoColor !default;
+$ol-message-info-color: darken($ol-infoColor, 60%) !default;
+$ol-message-info-filter: none !default;
+$ol-message-success-background-color: $ol-successColor !default;
+$ol-message-success-color: darken($ol-successColor, 60%) !default;
+$ol-message-success-filter: none !default;
+// endregion
+
+// region Collapse
+$ol-ant-collapse-font-family: $ol-font-family-primary !default;
+// endregion
+
+// region Radio
+$ol-radio-checked-after-border-color: $ol-primaryColor !default;
+$ol-radio-checked-hover-inner-border-color: $ol-primaryColor !default;
+$ol-radio-hover-inner-border-color: $ol-primaryColor !default;
+$ol-radio-inner-after-background-color: $ol-primaryColor !default;
+$ol-radio-inner-after-border-color: $ol-primaryColor !default;
+$ol-radio-inner-after-border-width: 2px !default;
+$ol-radio-inner-border-color: rgb(201, 201, 201) !default;
+// endregion
+
+// region Radio
+.ol-radio-btn {
+  .ant-radio-inner {
+    border-color: $ol-radio-inner-border-color;
+
+    &:after {
+      @include border($ol-radio-inner-after-border-width, $ol-radio-inner-after-border-color);
+      background-color: $ol-radio-inner-after-background-color;
+    }
+  }
+
+  &:hover .ant-radio .ant-radio-inner {
+    border-color: $ol-radio-hover-inner-border-color;
+  }
+
+  .ant-radio-checked .ant-radio-inner {
+    border-color: $ol-radio-checked-hover-inner-border-color;
+  }
+
+  .ant-radio-checked:after {
+    border-color: $ol-radio-checked-after-border-color;
+  }
+}
+
+// endregion
+
+// region Message
+.ant-message {
+  top: inherit;
+}
+
+.ant-message-notice {
+  padding: 0;
+  margin-bottom: 10px;
+
+  &:first-child {
+    margin-top: initial;
+  }
+
+  &.fade-leave {
+    // It remove the effect in messages
+    display: none;
+  }
+}
+
+.ant-message-notice-content {
+  padding: 0;
+  width: 100%;
+}
+
+.ant-message-custom-content {
+  padding: 10px 16px;
+  width: 100%;
+  font: {
+    family: $ol-message-custom-content-font-family;
+    size: $ol-message-custom-content-font-size;
+    weight: $ol-message-custom-content-font-weight;
+  }
+  text-transform: $ol-message-custom-content-text-transform;
+
+  > .anticon.anticon-check-circle,
+  > .anticon.anticon-close-circle,
+  > .anticon.anticon-info-circle {
+    display: none;
+  }
+
+  &.ant-message-error {
+    background-color: $ol-message-error-background-color;
+    color: $ol-message-error-color;
+
+    .anticon {
+      color: $ol-message-error-color;
+      filter: $ol-message-error-filter;
+    }
+  }
+
+  &.ant-message-success {
+    background-color: $ol-message-success-background-color;
+    color: $ol-message-success-color;
+
+    .anticon {
+      color: $ol-message-success-color;
+      filter: $ol-message-success-filter;
+    }
+  }
+
+  &.ant-message-info {
+    background-color: $ol-message-info-background-color;
+    color: $ol-message-info-color;
+
+    .anticon {
+      color: $ol-message-info-color;
+      filter: $ol-message-info-filter;
+    }
+  }
+}
+
+// endregion
+
+// region Select
+.ant-select {
+  @include flex(column);
+
+  .ant-select-selection {
+    &,
+    &:hover,
+    &:focus {
+      flex-grow: 1;
+
+      @include border($ol-select-border-width, $ol-select-border-color);
+      border-right-width: $ol-select-border-right-width !important;
+      border-radius: $ol-select-border-radius;
+      box-shadow: none;
+      background-color: $ol-select-background-color;
+      color: $ol-select-color;
+      font: {
+        family: $ol-select-font-family;
+        size: $ol-select-font-size;
+        weight: $ol-select-font-weight;
+      }
+
+      outline: 0;
+    }
+
+    > .ant-select-selection__rendered {
+      @include flex;
+      height: 100%;
+
+      > .ant-select-selection-selected-value {
+        display: block;
+        opacity: 1;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
+}
+
+.ant-select-dropdown {
+  font-family: $ol-select-font-family;
+  background-color: $ol-select-dropdown-background-color;
+  border: $ol-select-dropdown-border;
+  border-radius: $ol-select-dropdown-border-radius;
+
+  .ant-select-dropdown-menu-item {
+    font: {
+      family: $ol-select-font-family;
+      size: $ol-select-font-size;
+      weight: $ol-select-font-weight;
+    }
+    font-family: $ol-select-font-family;
+    border-radius: 0;
+    position: relative;
+    padding: $ol-select-dropdown-item-padding;
+    background-color: $ol-select-dropdown-item-background-color;
+    color: $ol-select-dropdown-item-color;
+    text-transform: $ol-select-dropdown-item-text-transform;
+
+    &:hover {
+      background-color: $ol-select-dropdown-item-background-color-hover;
+      color: $ol-select-dropdown-item-color-hover;
+    }
+
+    &.ant-select-dropdown-menu-item-selected {
+      &,
+      &:hover {
+        background-color: $ol-select-dropdown-item-background-color-selected;
+        color: $ol-select-dropdown-item-color-selected;
+      }
+    }
+  }
+
+  .ant-select-dropdown-menu-item:not(:last-child) {
+    border-bottom: 1px $ol-cloudyGrayColor solid;
+  }
+}
+
+// endregion
+
+// region Dropdown
+.ant-dropdown-trigger,
+.ol-dropdown-trigger {
+  &,
+  &:hover,
+  &:focus {
+    font: {
+      family: $ol-dropdown-trigger-font-family;
+      size: $ol-dropdown-trigger-font-size;
+      weight: $ol-dropdown-trigger-font-weight;
+    }
+    background-color: $ol-dropdown-trigger-background-color;
+    color: $ol-dropdown-trigger-color;
+    border: $ol-dropdown-trigger-border;
+    border-radius: $ol-dropdown-trigger-border-radius;
+    outline: 0;
+    box-shadow: none;
+    text-transform: $ol-dropdown-trigger-text-transform;
+  }
+}
+
+.ant-dropdown-menu,
+.ol-dropdown-menu {
+  background-color: $ol-dropdown-menu-background-color;
+  @include border($ol-dropdown-menu-border-width, $ol-dropdown-menu-border-color);
+  border-radius: $ol-dropdown-menu-border-radius;
+  font: {
+    family: $ol-dropdown-menu-font-family;
+    size: $ol-dropdown-menu-font-size;
+    weight: $ol-dropdown-menu-font-weight;
+  }
+  padding: $ol-dropdown-menu-padding;
+
+  .ant-dropdown-menu-item {
+    font: {
+      family: $ol-dropdown-menu-item-font-family;
+      size: $ol-dropdown-menu-item-font-size;
+      weight: $ol-dropdown-menu-item-font-weight;
+    }
+    border-radius: 0;
+    position: relative;
+    padding: $ol-dropdown-menu-item-padding;
+    background-color: $ol-dropdown-menu-item-background-color;
+    color: $ol-dropdown-menu-item-color;
+
+    &:hover {
+      background-color: $ol-dropdown-menu-item-hover-background-color;
+      color: $ol-dropdown-menu-item-hover-color;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px $ol-cloudyGrayColor solid;
+    }
+  }
+}
+
+// endregion
+
+// region DatePicker
+.ol-date-picker-container {
+  @include flex(column);
+  position: relative;
+
+  .ant-calendar-picker-container,
+  .ant-calendar-picker-container-placement-bottomLeft {
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .ant-calendar-picker-input,
+  .ant-calendar-input-wrap {
+    @include flex(column);
+    height: $ol-date-picker-input-height;
+    justify-content: center;
+    padding: 4px 20px;
+
+    font-family: $ol-date-picker-input-font-family;
+  }
+
+  .ant-calendar-picker.ol-date-picker {
+    .ant-calendar-picker-input {
+      @include border($ol-date-picker-input-border-width, $ol-date-picker-input-border-color);
+      border-radius: $ol-date-picker-input-border-radius;
+
+      &:hover {
+        @include border($ol-date-picker-input-hover-border-width, $ol-date-picker-input-hover-border-color);
+        border-radius: $ol-date-picker-input-hover-border-radius;
+      }
+
+      &:focus {
+        @include border($ol-date-picker-input-focus-border-width, $ol-date-picker-input-focus-border-color);
+        border-radius: $ol-date-picker-input-focus-border-radius;
+      }
+    }
+  }
+
+  .anticon-close-circle {
+    &.ant-calendar-picker-clear {
+      color: $ol-date-picker-input-clear-button-color;
+      background-color: $ol-date-picker-input-clear-button-background-color;
+    }
+  }
+
+  .ant-calendar-header a {
+    color: $ol-date-picker-header-action-color;
+
+    &:hover {
+      color: $ol-date-picker-header-action-hover-color;
+    }
+  }
+
+  .ant-calendar-cell {
+    > .ant-calendar-date {
+      background-color: $ol-date-picker-calendar-date-background-color;
+      color: $ol-date-picker-calendar-date-color;
+
+      &:hover {
+        color: $ol-date-picker-calendar-date-hover-color;
+        background-color: $ol-date-picker-calendar-date-hover-background-color;
+      }
+    }
+
+    &.ant-calendar-selected-day {
+      > .ant-calendar-date {
+        background-color: $ol-date-picker-calendar-date-selected-background-color;
+        color: $ol-date-picker-calendar-date-selected-color;
+
+        &:hover {
+          background-color: $ol-date-picker-calendar-date-selected-hover-background-color;
+          color: $ol-date-picker-calendar-date-selected-hover-color;
+        }
+      }
+    }
+
+    &.ant-calendar-today {
+      &:not(.ant-calendar-disabled-cell) {
+        > .ant-calendar-date {
+          background-color: $ol-date-picker-calendar-date-today-background-color;
+          color: $ol-date-picker-calendar-date-today-color;
+          @include border($ol-date-picker-calendar-date-today-border-width, $ol-date-picker-calendar-date-today-border-color);
+          border-radius: $ol-date-picker-calendar-date-today-border-radius;
+        }
+
+        &.ant-calendar-selected-day {
+          > .ant-calendar-date {
+            background-color: $ol-date-picker-calendar-date-selected-background-color;
+            color: $ol-date-picker-calendar-date-selected-color;
+
+            &:hover {
+              background-color: $ol-date-picker-calendar-date-selected-hover-background-color;
+              color: $ol-date-picker-calendar-date-selected-hover-color;
+            }
+          }
+        }
+      }
+    }
+
+    &.ant-calendar-last-month-cell {
+      > .ant-calendar-date {
+        background-color: $ol-date-picker-calendar-date-last-month-background-color;
+        color: $ol-date-picker-calendar-date-last-month-color;
+
+        &:hover {
+          background-color: $ol-date-picker-calendar-date-last-month-hover-background-color;
+          color: $ol-date-picker-calendar-date-last-month-hover-color;
+        }
+      }
+    }
+
+    &.ant-calendar-next-month-btn-day {
+      > .ant-calendar-date {
+        background-color: $ol-date-picker-calendar-date-next-month-background-color;
+        color: $ol-date-picker-calendar-date-next-month-color;
+
+        &:hover {
+          background-color: $ol-date-picker-calendar-date-next-month-hover-background-color;
+          color: $ol-date-picker-calendar-date-next-month-hover-color;
+        }
+      }
+    }
+
+    &.ant-calendar-disabled-cell {
+      > .ant-calendar-date {
+        background-color: $ol-date-picker-calendar-date-disabled-background-color;
+        color: $ol-date-picker-calendar-date-disabled-color;
+
+        &:hover {
+          background-color: $ol-date-picker-calendar-date-disabled-hover-background-color;
+          color: $ol-date-picker-calendar-date-disabled-hover-color;
+        }
+      }
+
+      &.ant-calendar-today {
+        > .ant-calendar-date {
+          margin-right: 0;
+          padding-right: 5px;
+
+          &:before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-calendar-month-panel-cell {
+    > .ant-calendar-month-panel-month {
+      background-color: $ol-date-picker-calendar-month-background-color;
+      color: $ol-date-picker-calendar-month-color;
+
+      &:hover {
+        color: $ol-date-picker-calendar-month-hover-color;
+        background-color: $ol-date-picker-calendar-month-hover-background-color;
+      }
+    }
+
+    &.ant-calendar-month-panel-selected-cell {
+      > .ant-calendar-month-panel-month {
+        color: $ol-date-picker-calendar-month-selected-color;
+        background-color: $ol-date-picker-calendar-month-selected-background-color;
+
+        &:hover {
+          color: $ol-date-picker-calendar-month-selected-hover-color;
+          background-color: $ol-date-picker-calendar-month-selected-hover-background-color;
+        }
+      }
+    }
+  }
+
+  .ant-calendar-year-panel-cell {
+    > .ant-calendar-year-panel-year {
+      background-color: $ol-date-picker-calendar-year-background-color;
+      color: $ol-date-picker-calendar-year-color;
+
+      &:hover {
+        color: $ol-date-picker-calendar-year-hover-color;
+        background-color: $ol-date-picker-calendar-year-hover-background-color;
+      }
+    }
+
+    &.ant-calendar-year-panel-selected-cell {
+      > .ant-calendar-year-panel-year {
+        color: $ol-date-picker-calendar-year-selected-color;
+        background-color: $ol-date-picker-calendar-year-selected-background-color;
+
+        &:hover {
+          color: $ol-date-picker-calendar-year-selected-hover-color;
+          background-color: $ol-date-picker-calendar-year-selected-hover-background-color;
+        }
+      }
+    }
+  }
+
+  .ant-calendar-decade-panel-cell {
+    > .ant-calendar-decade-panel-decade {
+      background-color: $ol-date-picker-calendar-decade-background-color;
+      color: $ol-date-picker-calendar-decade-color;
+
+      &:hover {
+        color: $ol-date-picker-calendar-decade-hover-color;
+        background-color: $ol-date-picker-calendar-decade-hover-background-color;
+      }
+    }
+
+    &.ant-calendar-decade-panel-selected-cell {
+      > .ant-calendar-decade-panel-decade {
+        color: $ol-date-picker-calendar-decade-selected-color;
+        background-color: $ol-date-picker-calendar-decade-selected-background-color;
+
+        &:hover {
+          color: $ol-date-picker-calendar-decade-selected-hover-color;
+          background-color: $ol-date-picker-calendar-decade-selected-hover-background-color;
+        }
+      }
+    }
+  }
+
+  .ant-calendar-footer-btn {
+    display: flex;
+    line-height: normal;
+    padding: $ol-date-picker-calendar-footer-btn-padding;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .ant-calendar-footer-extra {
+    height: auto;
+    line-height: normal;
+    margin: $ol-date-picker-calendar-footer-extra-margin;
+    padding: $ol-date-picker-calendar-footer-extra-padding;
+  }
+
+  .ant-calendar-today-btn {
+    color: $ol-date-picker-today-button-color;
+    margin: $ol-date-picker-today-button-margin;
+
+    &:hover {
+      color: $ol-date-picker-today-button-hover-color;
+    }
+
+    &.ant-calendar-today-btn-disabled {
+      color: $ol-date-picker-today-button-disabled-color;
+
+      &:hover {
+        color: $ol-date-picker-today-button-disabled-hover-color;
+      }
+    }
+  }
+}
+
+// endregion
+
+// region TimePicker
+.ol-time-picker-container {
+  @include flex(column);
+
+  .ant-time-picker {
+    width: auto;
+
+    .ant-time-picker-input {
+      @include border($ol-time-picker-input-border-width, $ol-time-picker-input-border-color);
+      border-radius: $ol-time-picker-input-border-radius;
+
+      &:hover {
+        @include border($ol-time-picker-input-hover-border-width, $ol-time-picker-input-hover-border-color);
+        border-radius: $ol-time-picker-input-hover-border-radius;
+      }
+
+      &:focus {
+        @include border($ol-time-picker-input-focus-border-width, $ol-time-picker-input-focus-border-color);
+        border-radius: $ol-time-picker-input-focus-border-radius;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .ant-time-picker-panel-combobox {
+    @include flex;
+
+    > .ant-time-picker-panel-select {
+      flex: 1;
+    }
+
+    li {
+      background-color: $ol-time-picker-item-background-color;
+      color: $ol-time-picker-item-color;
+
+      &:hover {
+        background-color: $ol-time-picker-item-hover-background-color;
+        color: $ol-time-picker-item-hover-color;
+      }
+
+      &.ant-time-picker-panel-select-option-selected {
+        background-color: $ol-time-picker-item-selected-background-color;
+        color: $ol-time-picker-item-selected-color;
+      }
+
+      &.ant-time-picker-panel-select-option-disabled {
+        display: none;
+      }
+    }
+  }
+
+  .ant-time-picker-input,
+  .ant-time-picker-panel-input-wrap {
+    @include flex(column);
+    height: $ol-date-picker-input-height;
+    justify-content: center;
+    padding: 4px 20px;
+
+    font-family: $ol-date-picker-input-font-family;
+  }
+}
+
+// endregion
+
+// region Text Area
+textarea {
+  &.ant-input {
+    @include border($ol-textarea-border-width, $ol-textarea-border-color);
+    @include border-radius($ol-textarea-border-radius);
+    font: {
+      family: $ol-textarea-font-family;
+      size: $ol-textarea-font-size;
+      weight: $ol-textarea-font-weight;
+    }
+    padding: $ol-textarea-padding;
+    outline: 0;
+    transition: $ol-textarea-transition;
+
+    &:hover {
+      @include border($ol-textarea-hover-border-width, $ol-textarea-hover-border-color);
+      @include border-radius($ol-textarea-hover-border-radius);
+    }
+
+    &:focus,
+    &.focus {
+      color: $ol-textarea-focus-color;
+      @include border($ol-textarea-focus-border-width, $ol-textarea-focus-border-color);
+      @include border-radius($ol-textarea-focus-border-radius);
+      box-shadow: $ol-textarea-focus-box-shadow;
+    }
+  }
+}
+
+// endregion
+
+// region Input
+.ant-input {
+  @include placeholder-color($ol-input-placeholder-color);
+  color: $ol-input-color;
+  font: {
+    family: $ol-input-font-family;
+    size: $ol-input-font-size;
+    weight: $ol-input-font-weight;
+  }
+  text-transform: $ol-input-text-transform;
+}
+
+.ant-input,
+.ol-input {
+  @include border($ol-input-border-width, $ol-input-border-color);
+  @include border-radius($ol-input-border-radius);
+  font: {
+    family: $ol-input-font-family;
+    size: $ol-input-font-size;
+    weight: $ol-input-font-weight;
+  }
+  color: $ol-input-color;
+  border-right-width: $ol-input-border-width !important;
+  padding: $ol-input-padding;
+  height: $ol-input-height;
+  outline: 0;
+  box-shadow: $ol-input-box-shadow;
+  transition: $ol-input-transition;
+  background-color: $ol-input-background-color;
+
+  &:hover {
+    @include border($ol-input-hover-border-width, $ol-input-hover-border-color);
+    @include border-radius($ol-input-hover-border-radius);
+    border-right-width: $ol-input-hover-border-width !important;
+  }
+
+  &:focus,
+  &.focus {
+    @include border-radius($ol-input-focus-border-radius);
+    box-shadow: $ol-input-focus-box-shadow;
+    border: {
+      style: solid;
+      top-color: $ol-input-focus-border-top-color;
+      top-width: $ol-input-focus-border-top-width;
+      right-color: $ol-input-focus-border-right-color;
+      right-width: $ol-input-focus-border-right-width !important;
+      bottom-color: $ol-input-focus-border-bottom-color;
+      bottom-width: $ol-input-focus-border-bottom-width;
+      left-color: $ol-input-focus-border-left-color;
+      left-width: $ol-input-focus-border-left-width;
+    }
+  }
+}
+
+// endregion
+
+// region Drawer
+.ant-drawer-content {
+  background-color: $ol-drawer-content-background-color;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.ant-drawer-header {
+  padding: 0;
+}
+
+.ant-drawer-body {
+  height: 100%;
+  display: flex;
+}
+
+// endregion
+
+// region Checkbox
+.ant-checkbox-wrapper {
+  color: inherit;
+}
+
+.ant-checkbox-inner {
+  border-color: $ol-checkbox-border-color;
+  background-color: $ol-checkbox-background-color;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: $ol-checkbox-checked-background-color;
+  border-color: $ol-checkbox-checked-border-color;
+
+  &:hover {
+    border-color: $ol-checkbox-checked-border-color;
+  }
+}
+
+.ant-checkbox {
+  &:hover {
+    .ant-checkbox-inner {
+      border-color: $ol-checkbox-hover-border-color;
+    }
+  }
+}
+
+.ant-switch {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: $ol-checkbox-focus-border-color;
+}
+
+.ant-checkbox-checked .ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: $ol-checkbox-checked-focus-border-color;
+
+  &:hover {
+    border-color: $ol-checkbox-checked-focus-border-color;
+  }
+}
+
+.ant-checkbox-inner::after {
+  border-color: $ol-checkbox-after-border-color;
+}
+
+// endregion
+
+// region Collapse
+.ant-collapse {
+  font-family: $ol-ant-collapse-font-family;
+}
+
+// endregion

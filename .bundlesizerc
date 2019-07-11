@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "path": "./build/**/*.{js,ttf}",
+      "maxSize": "300 kB"
+    },
+    {
+      "path": "./build/**/*.{png,svg,jpg,jpeg}",
+      "maxSize": "250 kB"
+    },
+    {
+      "path": "./build/**/*.{css,scss}",
+      "maxSize": "50 kB"
+    },
+    {
+      "path": "./build/**/*.html",
+      "maxSize": "50 kB"
+    }
+  ]
+}

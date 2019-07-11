@@ -1,0 +1,38 @@
+/*SCROLL*/
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: $ol-btn-border-radius-md;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  -webkit-border-radius: 7px;
+  background-color: $ol-cloudyGrayColor;
+  -webkit-box-shadow: none;
+}
+
+.ol-scroll {
+  &-light {
+    &::-webkit-scrollbar-thumb {
+      background-color: $ol-cloudyGrayColor;
+    }
+  }
+
+  &-dark {
+    &::-webkit-scrollbar-thumb {
+      background-color: $ol-silverColor;
+    }
+  }
+
+  &.scrollY {
+    overflow-y: scroll;
+  }
+}

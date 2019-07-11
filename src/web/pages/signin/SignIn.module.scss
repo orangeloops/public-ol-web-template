@@ -1,0 +1,32 @@
+@import "~assets/stylesheets/base/_common.scss";
+
+.wrapperContainer {
+  display: flex;
+  padding: 20px;
+}
+
+.container {
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  width: 400px;
+}
+
+.emailContainer {
+  margin-bottom: 10px;
+}
+
+.passwordContainer {
+  margin-bottom: 10px;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+  flex-direction: column;
+  display: flex;
+  align-self: center;
+}
+
+.button {
+  align-self: flex-end;
+}
