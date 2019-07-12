@@ -1,5 +1,4 @@
 # OrangeLoops Web Project Boilerplate
----
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/orangeloops/public-ol-web-template/pulls)
 
 ## Components
