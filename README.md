@@ -1,6 +1,6 @@
-# OrangeLoops Web Project Boilerplate [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/orangeloops/public-ol-web-template/pulls)
-
-This boilerplate uses [Create React App](https://github.com/facebook/create-react-app)
+# OrangeLoops Web Project Boilerplate
+---
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/orangeloops/public-ol-web-template/pulls)
 
 ## Components
 
@@ -21,6 +21,8 @@ This boilerplate uses [Create React App](https://github.com/facebook/create-reac
 - [Husky](https://github.com/typicode/husky/) for Git hooks support.
 - [Lint-staged](https://github.com/okonet/lint-staged/) to run linters on git staged files.
 - [Bundlesize](https://github.com/siddharthkp/bundlesize/) to check size of bundle's files.
+
+This boilerplate uses [Create React App](https://github.com/facebook/create-react-app)
 
 
 ## Getting Start
@@ -45,5 +47,6 @@ Then open [http://localhost:5000/](http://localhost:5000/) on your web browser.
 For deployment, run `npm run build` and upload `build/` to your server.
 
 ## License
+>You can check out the full license [here](https://github.com/orangeloops/public-ol-web-template/blob/develop/LICENSE)
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the terms of the MIT license.
