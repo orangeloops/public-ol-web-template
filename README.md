@@ -45,10 +45,13 @@ Then open [http://localhost:5000/](http://localhost:5000/) on your web browser.
 
 For deployment, run `npm run build` and upload `build/` to your server.
 
-## Contact
-Created by [@orangeloops](https://www.orangeloops.com/) - feel free to contact us!
-
 ## License
 >You can check out the full license [here](https://github.com/orangeloops/public-ol-web-template/blob/develop/LICENSE)
 
 This project is licensed under the terms of the MIT license.
+
+---
+
+[orangeloops.com](https://www.orangeloops.com/) &nbsp;&middot;&nbsp;
+[@orangeloopsinc](https://twitter.com/orangeloopsinc/) &nbsp;&middot;&nbsp;
+[Blog](https://orangeloops.com/blog/)
