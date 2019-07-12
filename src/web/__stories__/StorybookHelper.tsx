@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import * as React from "react";
-import {StoryFn} from "@storybook/addons";
+import {RenderFunction} from "@storybook/react";
 import {select} from "@storybook/addon-knobs";
 import {MockInterface} from "../../__mocks__/MockInterface";
 import {AppProps, App} from "../App";
@@ -16,11 +16,7 @@ const storyRouter = require("storybook-react-router").default;
 
 let lastStoryId: string;
 
-// TODO: Review Storybook type definitions
-export type Renderable = React.ComponentType | JSX.Element;
-export type RenderFunction = () => Renderable | Renderable[];
-
-export const withApp = (props: AppProps = {}, mockData: MockInterface = {}) => (storyFunction: StoryFn<any>, context: any) => {
+export const withApp = (props: AppProps = {}, mockData: MockInterface = {}) => (storyFunction: RenderFunction, context: any) => {
   if (_.isNil(props.config)) props.config = {};
 
   CoreHelper.mergeWith(CoreHelper.mergeWith(props.config, mockData.baseConfig), mockData.config);
@@ -54,7 +50,7 @@ export const withApp = (props: AppProps = {}, mockData: MockInterface = {}) => (
 
 export const withRouter = (links: any = undefined, routerProps: any = undefined) => storyRouter(links, routerProps);
 
-export const withCenter = () => (storyFunction: StoryFn<any>) => (
+export const withCenter = () => (storyFunction: RenderFunction) => (
   <div
     style={{
       position: "fixed",
@@ -72,12 +68,12 @@ export const withCenter = () => (storyFunction: StoryFn<any>) => (
   </div>
 );
 
-export const withFullHeight = () => (storyFunction: StoryFn<any>) => <div className="ol-fullHeight">{storyFunction()}</div>;
+export const withFullHeight = () => (storyFunction: RenderFunction) => <div className="ol-fullHeight">{storyFunction()}</div>;
 
-export const withStyleCustom = (style: any) => (storyFunction: StoryFn<any>) => <div style={style}>{storyFunction()}</div>;
+export const withStyleCustom = (style: any) => (storyFunction: RenderFunction) => <div style={style}>{storyFunction()}</div>;
 
-export const withSizeSmall = () => (storyFunction: StoryFn<any>) => <div style={{maxWidth: "300px", minWidth: "300px"}}>{storyFunction()}</div>;
+export const withSizeSmall = () => (storyFunction: RenderFunction) => <div style={{maxWidth: "300px", minWidth: "300px"}}>{storyFunction()}</div>;
 
-export const withSizeMedium = () => (storyFunction: StoryFn<any>) => <div style={{maxWidth: "450px", minWidth: "300px"}}>{storyFunction()}</div>;
+export const withSizeMedium = () => (storyFunction: RenderFunction) => <div style={{maxWidth: "450px", minWidth: "300px"}}>{storyFunction()}</div>;
 
-export const withSizeLarge = () => (storyFunction: StoryFn<any>) => <div style={{maxWidth: "800px", minWidth: "700px"}}>{storyFunction()}</div>;
+export const withSizeLarge = () => (storyFunction: RenderFunction) => <div style={{maxWidth: "800px", minWidth: "700px"}}>{storyFunction()}</div>;
