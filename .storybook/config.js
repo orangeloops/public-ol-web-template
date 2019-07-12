@@ -13,7 +13,7 @@ addParameters({
       brandUrl: "https://www.orangeloops.com",
       brandImage: null,
     }),
-    sortStoriesByKind: true,
+    storySort: (a, b) => a[1].id.localeCompare(b[1].id),
   },
 });
 
