@@ -53,5 +53,5 @@ This project is licensed under the terms of the MIT license.
 ---
 
 [orangeloops.com](https://www.orangeloops.com/) &nbsp;&middot;&nbsp;
-[@orangeloopsinc](https://twitter.com/orangeloopsinc/) &nbsp;&middot;&nbsp;
-[Blog](https://orangeloops.com/blog/)
+[twitter](https://twitter.com/orangeloopsinc/) &nbsp;&middot;&nbsp;
+[blog](https://orangeloops.com/blog/)
