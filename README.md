@@ -39,7 +39,7 @@ Then open [http://localhost:5000/](http://localhost:5000/) on your web browser.
 
 ### Testing
 
-1. Run `npm test` for test.
+Run `npm test` for test.
 
 ## Deploying
 
