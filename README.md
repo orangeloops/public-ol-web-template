@@ -1,4 +1,4 @@
-# OrangeLoops Web Project Boilerplate
+# OrangeLoops Web Project Boilerplate [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/orangeloops/public-ol-web-template/pulls)
 
 This boilerplate uses [Create React App](https://github.com/facebook/create-react-app)
 
