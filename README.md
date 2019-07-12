@@ -45,9 +45,6 @@ Run `npm test` for test.
 
 For deployment, run `npm run build` and upload `build/` to your server.
 
-## Contact
-Created by [@orangeloops](https://www.orangeloops.com/) - feel free to contact us!
-
 ## License
 >You can check out the full license [here](https://github.com/orangeloops/public-ol-web-template/blob/develop/LICENSE)
 
