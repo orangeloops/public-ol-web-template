@@ -24,7 +24,7 @@
 This boilerplate uses [Create React App](https://github.com/facebook/create-react-app)
 
 
-## Getting Start
+## Getting Started
 
 Run the following commands in your terminal
 
