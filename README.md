@@ -1,4 +1,4 @@
-# OrangeLoops Web Project Boilerplate
+# Web Project Boilerplate
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](https://github.com/orangeloops/public-ol-web-template/pulls) [![GitHub](https://img.shields.io/github/license/orangeloops/public-ol-web-template.svg)](https://github.com/orangeloops/public-ol-web-template/blob/develop/LICENSE)
 
 ## Components
