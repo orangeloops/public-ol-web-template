@@ -489,7 +489,7 @@ module.exports = function(webpackEnv) {
                         },
                       },
                     ],
-                    false
+                    false,
                   ),
                 },
                 {
@@ -506,7 +506,7 @@ module.exports = function(webpackEnv) {
                         },
                       },
                     ],
-                    false
+                    false,
                   ),
                 },
               ],

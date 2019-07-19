@@ -80,7 +80,7 @@ function getClientEnvironment(publicUrl) {
 
         STORYBOOK_ENV: process.env.STORYBOOK_ENV,
 
-        BUNDLE_TYPE: process.env.BUNDLE_TYPE || "library",
+        BUNDLE_TYPE: process.env.BUNDLE_TYPE || "app",
         BUNDLE_NAME: process.env.BUNDLE_NAME || appPackage.name,
 
         PACKAGE_NAME: appPackage.name,

@@ -1,6 +1,6 @@
 {
-  "short_name": "Phoenix",
-  "name": "Phoenix",
+  "name": "public-ol-web-template",
+  "short_name": "Web template",
   "icons": [
     {
       "src": "./assets/google/android-192x192.png",
