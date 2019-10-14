@@ -12,7 +12,7 @@ export abstract class BaseComponent<P = {}, S = {}> extends React.Component<P, S
     return WebHelper.LoadingSpin;
   }
 
-  protected formatMessage<TLocaleKey extends LocaleKey>(messageId: TLocaleKey, variables: LocaleParams[TLocaleKey] | undefined = undefined, defaultMessage: string | undefined = undefined, parseLineBreaks: boolean = false): string {
+  protected formatMessage<TLocaleKey extends LocaleKey>(messageId: TLocaleKey, variables: LocaleParams[TLocaleKey] | undefined = undefined, defaultMessage: string | undefined = undefined, parseLineBreaks = false): string {
     const {code} = this.dataStore.currentLocale;
 
     const mobxWorkaround = (workaround: string) => {};

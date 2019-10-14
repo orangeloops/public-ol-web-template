@@ -1,7 +1,7 @@
 import {Locale} from "./Locale";
 
 export const en_US: Locale = {
-  code: "en_US",
+  code: "en-US",
   "Common-dateFormatterWithoutTimeZone": "MMMM Do, YYYY [at] h:mmA",
   "Common-dateFormatterWithTimeZone": "MMMM Do, YYYY [at] h:mmA z",
   "Common-date": "date",

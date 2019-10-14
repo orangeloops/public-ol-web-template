@@ -431,7 +431,6 @@ module.exports = function(webpackEnv) {
               loader: require.resolve("babel-loader"),
               options: {
                 customize: require.resolve("babel-preset-react-app/webpack-overrides"),
-
                 plugins: [
                   [
                     require.resolve("babel-plugin-named-asset-import"),
@@ -489,7 +488,7 @@ module.exports = function(webpackEnv) {
                         },
                       },
                     ],
-                    false,
+                    false
                   ),
                 },
                 {
@@ -506,7 +505,7 @@ module.exports = function(webpackEnv) {
                         },
                       },
                     ],
-                    false,
+                    false
                   ),
                 },
               ],
@@ -552,7 +551,7 @@ module.exports = function(webpackEnv) {
                   loader: require.resolve("sass-loader"),
                   options: {
                     sourceMap: isEnvProduction && shouldUseSourceMap,
-                    data: fs.existsSync(paths.resolveApp("config/stylesheets.data.scss")) ? ` @import "config/stylesheets.data.scss";` : sassJSONImporter.transformJSONtoSass(stylesheetsConfig.sdk.variables),
+                    prependData: fs.existsSync(paths.resolveApp("config/stylesheets.data.scss")) ? ` @import "config/stylesheets.data.scss";` : sassJSONImporter.transformJSONtoSass(stylesheetsConfig.sdk.variables),
                   },
                 },
                 {
@@ -585,8 +584,10 @@ module.exports = function(webpackEnv) {
                     loader: require.resolve("sass-loader"),
                     options: {
                       sourceMap: isEnvProduction && shouldUseSourceMap,
-                      data: fs.existsSync(paths.resolveApp("config/stylesheets.data.scss")) ? ` @import "config/stylesheets.data.scss";` : sassJSONImporter.transformJSONtoSass(stylesheetsConfig.sdk.variables),
-                      modules: true,
+                      prependData: fs.existsSync(paths.resolveApp("config/stylesheets.data.scss")) ? ` @import "config/stylesheets.data.scss";` : sassJSONImporter.transformJSONtoSass(stylesheetsConfig.sdk.variables),
+                      sassOptions: {
+                        modules: true,
+                      },
                     },
                   },
                   {
@@ -736,7 +737,7 @@ module.exports = function(webpackEnv) {
         new WorkboxWebpackPlugin.GenerateSW({
           cacheId: appPackage.name,
           clientsClaim: true,
-          exclude: [/\.map$/, /asset-manifest\.json$/],
+          exclude: [/\.map$/, /asset-manifest\.json$/, /index.html/],
           importWorkboxFrom: "cdn",
           navigateFallback: publicUrl + "/index.html",
           navigateFallbackBlacklist: [

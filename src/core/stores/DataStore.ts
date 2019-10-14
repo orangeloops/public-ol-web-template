@@ -1,13 +1,14 @@
 import * as _ from "lodash";
 import {action, computed, observable, runInAction} from "mobx";
+import * as moment from "moment";
+import intl, {ReactIntlUniversalOptions} from "react-intl-universal";
+
 import {APIClient} from "../apiclients/rest/APIClient";
 import {FetchUserRequest, FetchUserResponse, SignInRequest, SignInResponse} from "../apiclients/rest/APIClient.types";
 import {AppConfig} from "../AppConfig";
-import * as Models from "../models";
 import {Locale} from "../locales/Locale";
+import * as Models from "../models";
 import {CoreHelper} from "../utils/CoreHelper";
-import * as moment from "moment";
-import intl, {ReactIntlUniversalOptions} from "react-intl-universal";
 
 export type AuthenticationState = {
   user?: Models.User;
@@ -19,8 +20,8 @@ export type AuthenticationState = {
 export class DataStore {
   private static instance: DataStore | undefined;
 
-  @observable private initializing: boolean = false;
-  @observable private initialized: boolean = false;
+  @observable private initializing = false;
+  @observable private initialized = false;
 
   @observable currentLocale: Locale = undefined as any;
 
@@ -66,7 +67,10 @@ export class DataStore {
     if (currentLocale && nextLocale && nextLocale.code === currentLocale.code) return;
 
     this.currentLocale = nextLocale;
-    const momentLocale = moment.locale(nextLocale.code);
+
+    // https://github.com/moment/moment/issues/3624
+    const hyphenIndex = nextLocale.code.indexOf("-");
+    const momentLocale = moment.locale(hyphenIndex === -1 ? nextLocale.code : nextLocale.code.substr(0, hyphenIndex));
 
     const locales: Record<string, Locale> = {};
 

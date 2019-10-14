@@ -1,6 +1,7 @@
 import * as _ from "lodash";
-import * as uuid from "uuid";
 import intl from "react-intl-universal";
+import * as uuid from "uuid";
+
 import {LocaleKey, LocaleParams} from "../locales/Locale";
 
 // AppConfig, Models, Stores can not be imported!
@@ -8,19 +9,21 @@ import {LocaleKey, LocaleParams} from "../locales/Locale";
 const base64 = require("base-x")("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
 
 (String.prototype as any).replaceAll = function(search: string, replacement: string) {
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
   const target = this;
 
   return target.replace(new RegExp(search, "g"), replacement);
 };
 
 (String.prototype as any).trimAll = function() {
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
   const target = this;
 
   return target.replaceAll(" ", "");
 };
 
 export class CoreHelper {
-  static getUUID(short: boolean = true): string {
+  static getUUID(short = true): string {
     if (short) {
       const buf = new Buffer(16);
       const uuidLong = uuid.v4(null, buf);
@@ -34,7 +37,7 @@ export class CoreHelper {
     } else return uuid.v4();
   }
 
-  static formatMessage<TLocaleKey extends LocaleKey>(messageId: TLocaleKey, variables: LocaleParams[TLocaleKey] | undefined = undefined, defaultMessage: string | undefined = undefined, parseLineBreaks: boolean = false): string {
+  static formatMessage<TLocaleKey extends LocaleKey>(messageId: TLocaleKey, variables: LocaleParams[TLocaleKey] | undefined = undefined, defaultMessage: string | undefined = undefined, parseLineBreaks = false): string {
     let result = intl.formatMessage(
       {
         id: messageId,
@@ -57,7 +60,7 @@ export class CoreHelper {
     return pattern.test(email);
   }
 
-  static mergeWith(object: any, values: any, updateObject: boolean = true, customizer?: (value: any, sourceValue: any, key: any) => any): any {
+  static mergeWith(object: any, values: any, updateObject = true, customizer?: (value: any, sourceValue: any, key: any) => any): any {
     if (updateObject) {
       return _.mergeWith(object, values, !_.isNil(customizer) ? customizer : this.mergeWithCustomizer);
     } else {

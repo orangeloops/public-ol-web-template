@@ -4,10 +4,11 @@ import {ApolloLink, execute} from "apollo-link";
 import {onError} from "apollo-link-error";
 import {createUploadLink} from "apollo-upload-client";
 import gql from "graphql-tag";
+
+import {AppConfig} from "../../AppConfig";
 import * as Models from "../../models";
 import {FetchUserRequest, FetchUserResponse} from "./APIClient.types";
 import {BaseAPIClient, RequestConfig, RequestMethod, RequestOptions} from "./BaseAPIClient";
-import {AppConfig} from "../../AppConfig";
 
 export type ConfigureClientOptions = {
   userAgent: string;

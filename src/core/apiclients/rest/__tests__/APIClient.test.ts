@@ -1,6 +1,7 @@
 import moment from "moment";
-import {TestHelper} from "../../../utils/TestHelper";
+
 import {userDefault} from "../__mocks__/UserAPI.mock";
+import {TestHelper} from "../../../utils/TestHelper";
 import {APIClient} from "../APIClient";
 
 const networkMock = TestHelper.getNetworkMockAdapter();

@@ -1,5 +1,6 @@
 import {observable} from "mobx";
 import moment from "moment";
+
 import {BaseModel} from "./BaseModel";
 
 export class User extends BaseModel {

@@ -3,7 +3,7 @@
 import {addParameters, addDecorator, configure} from "@storybook/react";
 import {create} from "@storybook/theming";
 import {withKnobs} from "@storybook/addon-knobs";
-import {withRouter} from "../src/web/__stories__/StorybookHelper";
+import {INITIAL_VIEWPORTS} from "@storybook/addon-viewport";
 
 addParameters({
   options: {
@@ -15,10 +15,12 @@ addParameters({
     }),
     sortStoriesByKind: true,
   },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
 });
 
 addDecorator(withKnobs);
-addDecorator(withRouter());
 
 const req = require.context("../src/web", true, /.stories.tsx?/);
 

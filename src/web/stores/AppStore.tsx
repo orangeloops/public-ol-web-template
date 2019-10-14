@@ -62,7 +62,7 @@ export class AppStore {
 
   private initialConfig: any;
 
-  mobileBreakpoint: number = 769; // sm breakpoint
+  mobileBreakpoint = 769; // sm breakpoint
 
   dataStore = new DataStore();
 
@@ -76,7 +76,7 @@ export class AppStore {
     stateByComponentType: new Map(),
   };
 
-  private isTouch: boolean = false;
+  private isTouch = false;
   private inputModeTimer: any | undefined;
 
   constructor() {
@@ -132,7 +132,7 @@ export class AppStore {
     this.setMode(mode);
   }
 
-  navigateTo(path: string, replace: boolean = false) {
+  navigateTo(path: string, replace = false) {
     console.assert(!_.isNil(path) && path.length > 0);
 
     const prefix = ``;

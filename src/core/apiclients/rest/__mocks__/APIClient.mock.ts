@@ -1,4 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
+
 import {APIClient} from "../APIClient";
 import {userDefault} from "./UserAPI.mock";
 

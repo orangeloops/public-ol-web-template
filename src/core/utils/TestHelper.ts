@@ -1,8 +1,8 @@
 import "reflect-metadata";
 
-import * as _ from "lodash";
 import MockAdapter from "axios-mock-adapter";
 import {configure} from "enzyme";
+import * as _ from "lodash";
 
 import {APIClient} from "../apiclients/rest/APIClient";
 import {DataStore} from "../stores/DataStore";
@@ -44,7 +44,7 @@ export abstract class TestHelper {
     done();
   }
 
-  static async wait(ms: number = 0) {
+  static async wait(ms = 0) {
     await new Promise(resolve => setTimeout(resolve, ms));
   }
 }

@@ -1,6 +1,5 @@
 import * as _ from "lodash";
 import * as React from "react";
-import {RenderFunction} from "@storybook/react";
 import {select} from "@storybook/addon-knobs";
 import {MockInterface} from "../../__mocks__/MockInterface";
 import {AppProps, App} from "../App";
@@ -12,10 +11,9 @@ import {en_US} from "../../core/locales/en_US";
 import {es_ES} from "../../core/locales/es_ES";
 import {mockAPIClient} from "../../core/apiclients/rest/__mocks__/APIClient.mock";
 
-const storyRouter = require("storybook-react-router").default;
-
 let lastStoryId: string;
 
+export type RenderFunction = () => React.ReactNode;
 export const withApp = (props: AppProps = {}, mockData: MockInterface = {}) => (storyFunction: RenderFunction, context: any) => {
   if (_.isNil(props.config)) props.config = {};
 
@@ -47,8 +45,6 @@ export const withApp = (props: AppProps = {}, mockData: MockInterface = {}) => (
     </App>
   );
 };
-
-export const withRouter = (links: any = undefined, routerProps: any = undefined) => storyRouter(links, routerProps);
 
 export const withCenter = () => (storyFunction: RenderFunction) => (
   <div

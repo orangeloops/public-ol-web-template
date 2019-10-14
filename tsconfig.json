@@ -37,7 +37,8 @@
   "include": [
     "typings/**/*",
     "src/**/*",
+    "scripts/*",
     "node_modules/@types/jest/index.d.ts"
   ],
-  "exclude": [".storybook", ".storybook_build", ".vscode", "build", "config", "node_modules", "public", "scripts"]
+  "exclude": [".storybook", ".storybook_build", ".vscode", "build", "config", "node_modules", "public"]
 }
