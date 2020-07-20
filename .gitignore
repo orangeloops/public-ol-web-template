@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/.pnp
+.pnp.js
 
 # testing
 /.temp/
@@ -38,3 +40,4 @@ Thumbs.db
 Desktop.ini
 package-lock.json
 /src/**/*.d.ts
+/config/stylesheets.data.scss

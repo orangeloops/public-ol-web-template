@@ -16,15 +16,10 @@ $ol-errorTextColor: #fff !default;
 $ol-primaryColor: #9400d3 !default;
 $ol-primaryColor-dark: darken($ol-primaryColor, 15%) !default;
 $ol-primaryColor-light: lighten($ol-primaryColor, 15%) !default;
-$ol-primaryColor-opacity: #b003fa !default;
 
 $ol-secondaryColor: #ff2400 !default;
 $ol-secondaryColor-opacity: rgba(0, 0, 0, 0.5) !default;
 $ol-secondaryColor-dark: darken($ol-secondaryColor, 15%) !default;
-
-$ol-tertiaryColor: #008080 !default;
-$ol-tertiaryColor-light: lighten($ol-primaryColor, 15%) !default;
-$ol-tertiaryColor-opacity: $ol-primaryColor-opacity !default;
 
 $ol-auxiliaryColor: #bb4f2d !default;
 $ol-actionColor: $ol-blackColor !default;
@@ -44,31 +39,11 @@ $ol-closingSoonColor: #777777 !default;
 $ol-closedColor: #777777 !default;
 
 // FONTS
-$ol-font-family-primary: Phoenix, "Helvetica", "Arial", "sans-serif" !default;
+$ol-font-family-primary: App, "Helvetica", "Arial", "sans-serif" !default;
 
 $ol-font-family-light-src: url("~assets/stylesheets/fonts/default-light.woff2") format("woff2"), url("~assets/stylesheets/fonts/default-light.woff") format("woff") !default;
 $ol-font-family-regular-src: url("~assets/stylesheets/fonts/default-regular.woff2") format("woff2"), url("~assets/stylesheets/fonts/default-regular.woff") format("woff") !default;
 $ol-font-family-bold-src: url("~assets/stylesheets/fonts/default-bold.woff2") format("woff2"), url("~assets/stylesheets/fonts/default-bold.woff") format("woff") !default;
-
-// FONTS
-$ol-font-size-xs: 10px !default;
-$ol-font-size-sm: 11px !default;
-$ol-font-size-md: 13px !default;
-$ol-font-size-base: 14px !default;
-$ol-font-size-lg: 18px !default;
-$ol-font-size-xl: 24px !default;
-
-$ol-pageTitle-font-size: 30px !default;
-
-$ol-title-font-size: 24px !default;
-
-$ol-subTitle-font-size: 18px !default;
-
-$ol-mainContent-font-size: 16px !default;
-
-$ol-content-font-size: 14px !default;
-
-$ol-auxiliaryContent-font-size: 12px !default;
 
 // BREAKPOINTS
 $breakpoints: (
@@ -91,188 +66,3 @@ $breakpoints: (
     min-width: 1601px,
   ),
 ) !default;
-
-// Z-INDEX-LIST
-$ol-zindex-affix: 10 !default;
-$ol-zindex-back-top: 10 !default;
-$ol-zindex-modal-mask: 1000 !default;
-$ol-zindex-modal: 1000 !default;
-$ol-zindex-notification: 1010 !default;
-$ol-zindex-message: 1010 !default;
-$ol-zindex-popover: 1030 !default;
-$ol-zindex-picker: 1050 !default;
-$ol-zindex-dropdown: 1050 !default;
-$ol-zindex-tooltip: 1060 !default;
-
-// PADDINGS
-$ol-padding-xs: 6px !default; // Small items
-$ol-padding-sm: 10px !default; // Items and buttons
-$ol-padding-md: 15px !default; // small containers
-$ol-padding-lg: 20px !default; // Containers
-$ol-padding-xl: 30px !default; // Wrappers
-$ol-padding-xxl: 40px !default; // Layout
-
-// MARGINS
-$ol-margin-xs: 6px !default; // Small items
-$ol-margin-sm: 10px !default; // Items and buttons
-$ol-margin-md: 15px !default; // small containers
-$ol-margin-lg: 20px !default; // Containers
-$ol-margin-xl: 30px !default; // Wrappers
-$ol-margin-xxl: 40px !default; // Layout
-
-// BUTTON
-$ol-btn-border-radius-base: 0 !default;
-$ol-btn-border-radius-md: 10px !default;
-
-// BOX SHADOW
-$ol-box-shadow-base: 0 4px 12px rgba(0, 0, 0, 0.175) !default;
-$ol-box-shadow-soft: -7px 0px 20px 0px rgba(0, 0, 0, 0.1) !default;
-$ol-box-shadow-none: none;
-
-// GRID
-$ol-grid-gap-md: 20px !default;
-$ol-grid-gap-base: 10px !default;
-$ol-grid-gap-sm: 5px !default;
-$ol-grid-gap-xs: 3px !default;
-
-// GENERAL
-
-// BORDERS
-$ol-divider-border-primary: 1px !default;
-$ol-divider-border-secondary: 1px !default;
-$ol-divider-border-base: 1px !default;
-
-:root {
-  --ol-primaryColor: #{$ol-primaryColor};
-  --ol-primaryColor-dark: #{$ol-primaryColor-dark};
-  --ol-primaryColor-light: #{$ol-primaryColor-light};
-
-  --ol-successColor: #{$ol-successColor};
-  --ol-successColor-dark: #{$ol-successColor-dark};
-
-  --ol-infoColor: #{$ol-infoColor};
-  --ol-infoColor-dark: #{$ol-infoColor-dark};
-
-  --ol-errorColor: #{$ol-errorColor};
-  --ol-errorColor-dark: #{$ol-errorColor-dark};
-}
-
-// Components
-$ol-header-logo-height: 30px !default;
-$ol-header-logo-width: 134px !default;
-$ol-header-height: $ol-header-logo-height + 30px !default;
-
-// Content
-$ol-primaryContentColor: $ol-blackColor !default;
-
-// Headers
-$ol-headerOne-color: $ol-primaryContentColor !default;
-$ol-headerOne-font-family: $ol-font-family-primary !default;
-$ol-headerOne-font-size: $ol-pageTitle-font-size !default;
-$ol-headerOne-font-weight: normal !default;
-$ol-headerOne-text-align: center !default;
-$ol-headerOne-text-decoration: none !default;
-$ol-headerOne-text-transform: capitalize !default;
-
-$ol-headerTwo-color: $ol-primaryContentColor !default;
-$ol-headerTwo-font-family: $ol-font-family-primary !default;
-$ol-headerTwo-font-size: $ol-title-font-size !default;
-$ol-headerTwo-font-weight: normal !default;
-$ol-headerTwo-text-decoration: none !default;
-$ol-headerTwo-text-transform: capitalize !default;
-$ol-headerTwo-text-align: center !default;
-
-$ol-headerThree-color: $ol-primaryContentColor !default;
-$ol-headerThree-font-family: $ol-font-family-primary !default;
-$ol-headerThree-font-size: $ol-subTitle-font-size !default;
-$ol-headerThree-font-weight: bold !default;
-$ol-headerThree-text-decoration: none !default;
-$ol-headerThree-text-transform: capitalize !default;
-$ol-headerThree-text-align: center !default;
-
-$ol-bodyOne-color: $ol-primaryContentColor !default;
-$ol-bodyOne-font-family: $ol-font-family-primary !default;
-$ol-bodyOne-font-size: $ol-mainContent-font-size !default;
-$ol-bodyOne-font-weight: normal !default;
-$ol-bodyOne-text-decoration: none !default;
-$ol-bodyOne-text-transform: none !default;
-$ol-bodyOne-text-align: left !default;
-
-$ol-bodyTwo-color: $ol-primaryContentColor !default;
-$ol-bodyTwo-font-family: $ol-font-family-primary !default;
-$ol-bodyTwo-font-size: $ol-content-font-size !default;
-$ol-bodyTwo-font-weight: bold !default;
-$ol-bodyTwo-text-decoration: none !default;
-$ol-bodyTwo-text-transform: none !default;
-$ol-bodyTwo-text-align: left !default;
-
-$ol-bodyThree-color: $ol-primaryContentColor !default;
-$ol-bodyThree-font-family: $ol-font-family-primary !default;
-$ol-bodyThree-font-size: $ol-content-font-size !default;
-$ol-bodyThree-font-weight: normal !default;
-$ol-bodyThree-text-decoration: none !default;
-$ol-bodyThree-text-transform: none !default;
-$ol-bodyThree-text-align: left !default;
-
-// Buttons
-$ol-primaryButton-active-background-color: $ol-primaryColor !default;
-$ol-primaryButton-active-box-shadow: inset 0 3px 5px rgba($ol-blackColor, 0.15) !default;
-$ol-primaryButton-active-color: $ol-whiteColor !default;
-$ol-primaryButton-background-color: $ol-primaryColor !default;
-$ol-primaryButton-border-color: transparent !default;
-$ol-primaryButton-border-radius: 0 !default;
-$ol-primaryButton-border-style: solid !default;
-$ol-primaryButton-border-width: 0 !default;
-$ol-primaryButton-color: $ol-whiteColor !default;
-$ol-primaryButton-disabled-background-color: $ol-primaryColor-light !default;
-$ol-primaryButton-disabled-color: $ol-whiteColor !default;
-$ol-primaryButton-focus-background-color: $ol-primaryColor-dark !default;
-$ol-primaryButton-focus-color: $ol-whiteColor !default;
-$ol-primaryButton-font-family: $ol-headerThree-font-family !default;
-$ol-primaryButton-font-size: $ol-headerThree-font-size !default;
-$ol-primaryButton-font-weight: $ol-headerThree-font-weight !default;
-$ol-primaryButton-hover-background-color: $ol-primaryColor-dark !default;
-$ol-primaryButton-hover-color: $ol-whiteColor !default;
-$ol-primaryButton-padding: $ol-padding-md $ol-padding-xxl !default;
-$ol-primaryButton-text-decoration: none !default;
-$ol-primaryButton-text-transform: capitalize !default;
-$ol-primaryButton-width: auto !default;
-$ol-primaryButton-height: auto !default;
-$ol-primaryButton-sm-font-size: $ol-headerThree-font-size !default;
-$ol-primaryButton-sm-font-weight: $ol-headerThree-font-weight !default;
-$ol-primaryButton-sm-padding: $ol-padding-md !default;
-$ol-primaryButton-sm-width: auto !default;
-
-$ol-secondaryButton-active-background-color: $ol-secondaryColor !default;
-$ol-secondaryButton-active-box-shadow: inset 0 3px 5px rgba($ol-blackColor, 0.15) !default;
-$ol-secondaryButton-active-color: $ol-whiteColor !default;
-$ol-secondaryButton-background-color: $ol-secondaryColor !default;
-$ol-secondaryButton-border-color: transparent !default;
-$ol-secondaryButton-border-radius: 0 !default;
-$ol-secondaryButton-border-style: solid !default;
-$ol-secondaryButton-border-width: 0 !default;
-$ol-secondaryButton-color: $ol-whiteColor !default;
-$ol-secondaryButton-disabled-background-color: $ol-secondaryColor-opacity !default;
-$ol-secondaryButton-disabled-color: $ol-whiteColor !default;
-$ol-secondaryButton-focus-background-color: $ol-secondaryColor-dark !default;
-$ol-secondaryButton-focus-color: $ol-whiteColor !default;
-$ol-secondaryButton-font-family: $ol-headerThree-font-family !default;
-$ol-secondaryButton-font-size: $ol-headerThree-font-size !default;
-$ol-secondaryButton-font-weight: $ol-headerThree-font-weight !default;
-$ol-secondaryButton-hover-background-color: $ol-secondaryColor-dark !default;
-$ol-secondaryButton-hover-color: $ol-whiteColor !default;
-$ol-secondaryButton-padding: $ol-padding-md $ol-padding-xxl !default;
-$ol-secondaryButton-text-decoration: none !default;
-$ol-secondaryButton-text-transform: capitalize !default;
-$ol-secondaryButton-width: auto !default;
-$ol-secondaryButton-height: auto !default;
-$ol-secondaryButton-sm-font-size: $ol-headerThree-font-size !default;
-$ol-secondaryButton-sm-font-weight: $ol-headerThree-font-weight !default;
-$ol-secondaryButton-sm-padding: $ol-padding-md !default;
-$ol-secondaryButton-sm-width: auto !default;
-
-// LINK
-$ol-link-color: $ol-primaryContentColor !default;
-$ol-link-hover-color: $ol-primaryColor !default;
-$ol-link-active-color: $ol-primaryColor !default;
-$ol-link-hover-decoration: none !default;

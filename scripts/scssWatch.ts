@@ -1,7 +1,7 @@
 import path from "path";
+import fs from "fs-extra";
 import {projectPath, runCommand} from "./helpers";
 import chokidar from "chokidar";
-import fs from "fs";
 
 const watchBasePath = path.resolve(projectPath, "src", "web");
 const watcher = chokidar.watch("**/*.module.scss", {
@@ -19,5 +19,5 @@ watcher.on("all", (event, relativePath) => {
     }, 200);
   }
 
-  if (fs.existsSync(absPath)) runCommand(["tsm", [absPath, "--aliasPrefixes.~", "src/"]]);
+  if (fs.existsSync(absPath)) runCommand(["tsm", [absPath, "--aliasPrefixes.~", "src/", "--aliasPrefixes.@app", "."]]);
 });

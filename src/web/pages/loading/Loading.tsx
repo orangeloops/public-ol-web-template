@@ -1,46 +1,32 @@
 import * as _ from "lodash";
 import * as React from "react";
-import {BaseComponent} from "../../components/BaseComponent";
 
-import {Icon, Spin} from "antd";
+import {Spin} from "antd";
+import {LoadingOutlined} from "@ant-design/icons";
 import {observer} from "mobx-react";
 
 import styles from "./Loading.module.scss";
+import {WebHelper} from "../../utils/WebHelper";
 
-type LoadingProps = {
+export type LoadingProps = {
   text?: string;
 };
 
-type LoadingState = {};
+export const Loading: React.FunctionComponent<LoadingProps> = observer((props) => {
+  const {text} = props;
+  const loadingText = typeof text === "string" && text.length > 0 ? text : WebHelper.formatMessage("Common-loadingText");
 
-@observer
-export class Loading extends BaseComponent<LoadingProps, LoadingState> {
-  state: LoadingState = {} as LoadingState;
+  return (
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <div className={styles.logo} />
 
-  protected get LoadingIndicator(): React.ReactNode {
-    const icon = <Icon type="loading" className="ol-loading-spin-icon" />;
+        <div className={styles.content}>{loadingText}</div>
 
-    return (
-      <div className="ol-loading-spin">
-        <Spin indicator={icon} delay={500} />
-      </div>
-    );
-  }
-
-  render() {
-    const {text} = this.props;
-
-    const loadingText = !_.isNil(text) && text.length > 0 ? text : this.formatMessage("Common-loadingText");
-
-    return (
-      <div className={styles.container}>
-        <div className={styles.box}>
-          <div className={styles.logo} />
-          <div className={styles.content}>{loadingText}</div>
-
-          {this.LoadingIndicator}
+        <div className="ol-loading-spin">
+          <Spin indicator={<LoadingOutlined className="ol-loading-spin-icon" />} delay={500} />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+});

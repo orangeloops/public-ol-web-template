@@ -12,7 +12,7 @@ module.exports = {
   // browser: false,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "<rootDir>/node_modules/.cache/jest",
+  cacheDirectory: "<rootDir>/node_modules/.cache/jest",
 
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
@@ -110,9 +110,7 @@ module.exports = {
   // rootDir: null,
 
   // A list of paths to directories that Jest should use to search for files in
-  // roots: [
-  //   "<rootDir>"
-  // ],
+  roots: ["<rootDir>/src"],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -139,7 +137,7 @@ module.exports = {
   testMatch: ["**/__tests__/**/*.test.(js|jsx|ts|tsx)"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ["/scripts/", "/node_modules/"],
+  testPathIgnorePatterns: ["<rootDir>/.storybook_build/", "<rootDir>/build/", "<rootDir>/scripts/", "<rootDir>/node_modules/"],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],

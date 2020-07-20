@@ -4,6 +4,9 @@
 require("../env");
 
 import {configure} from "mobx";
+import "jest-canvas-mock";
+
+require("../../src/web/AppConfig");
 
 const fetchPolyfill = require("whatwg-fetch");
 
@@ -24,6 +27,6 @@ jest.doMock("moment", () => {
 });
 
 // React 16: https://gist.github.com/gaearon/9a4d54653ae9c50af6c54b4e0e56b583
-global.requestAnimationFrame = function(callback) {
+global.requestAnimationFrame = function (callback) {
   setTimeout(callback, 0);
 };

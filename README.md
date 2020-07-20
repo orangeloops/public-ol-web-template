@@ -1,7 +1,7 @@
 # Web Project Boilerplate
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](https://github.com/orangeloops/public-ol-web-template/pulls) [![GitHub](https://img.shields.io/github/license/orangeloops/public-ol-web-template.svg)](https://github.com/orangeloops/public-ol-web-template/blob/develop/LICENSE)
 
-This web template is an empty project prepared with primary software libraries and configurations needed to begin developing a React web application.
+This [web template](https://orangeloops.com/2019/08/open-source-templates-for-building-react-and-reactnative-apps/) is an empty project prepared with primary software libraries and configurations needed to begin developing a React web application.
 
 It also has basic sample components, tests, and demonstrations of working with tools such as React-Router or Storybook.
 

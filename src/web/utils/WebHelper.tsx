@@ -2,24 +2,33 @@ import * as React from "react";
 import {CoreHelper} from "../../core/utils/CoreHelper";
 import {LocaleKey, LocaleParams} from "../locales";
 
-import {Icon, Spin} from "antd";
+import {Spin} from "antd";
+
+import {LoadingOutlined as LoadingIcon} from "@ant-design/icons";
+import {DataStore} from "../../core/stores/DataStore";
 
 export type ElementSize = "xs" | "sm" | "md" | "lg" | "xl";
 
+const isStorybook = !!process.env.STORYBOOK_ENV;
+
 export abstract class WebHelper {
-  static Router: any = CoreHelper.isStorybook ? require("react-router-dom").MemoryRouter : require("react-router-dom").BrowserRouter;
+  static Router: any = isStorybook ? require("react-router-dom").MemoryRouter : require("react-router-dom").BrowserRouter;
 
   static get LoadingSpin(): React.ReactNode {
-    const icon = <Icon type="loading" className="ol-spin" />;
+    const icon = <LoadingIcon />;
 
     return (
-      <div className="ol-spin-container">
+      <div>
         <Spin indicator={icon} delay={500} />
       </div>
     );
   }
 
   static formatMessage<TLocaleKey extends LocaleKey>(messageId: TLocaleKey, variables: LocaleParams[TLocaleKey] | undefined = undefined, defaultMessage: string | undefined = undefined, parseLineBreaks = false): string {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    const {currentLocale} = DataStore.getInstance();
+
     return CoreHelper.formatMessage(messageId as any, variables, defaultMessage, parseLineBreaks);
   }
 
@@ -32,7 +41,7 @@ export abstract class WebHelper {
 
     let result = `<span>${text}</span>`;
 
-    rules.forEach(rule => {
+    rules.forEach((rule) => {
       result = result.replace(rule.regex, rule.replacement);
     });
 
@@ -115,5 +124,9 @@ export abstract class WebHelper {
     };
 
     animateScroll();
+  }
+
+  static get isStorybook(): boolean {
+    return isStorybook;
   }
 }

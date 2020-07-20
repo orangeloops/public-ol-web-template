@@ -1,13 +1,15 @@
 import * as _ from "lodash";
-import {action, observable} from "mobx";
+import {action, observable, runInAction} from "mobx";
 import * as React from "react";
 import {History, Location} from "history";
 import {AppConfig} from "../AppConfig";
 import {CoreHelper} from "../../core/utils/CoreHelper";
 import {DataStore} from "../../core/stores/DataStore";
 
-import {Icon, message} from "antd";
+import {message} from "antd";
 import {MessageType as AntMessageType} from "antd/lib/message";
+
+import {CloseOutlined as CloseIcon} from "@ant-design/icons";
 
 // Internalization
 import {en_US} from "../../core/locales/en_US";
@@ -35,6 +37,11 @@ export type AppMode = "mobile" | "desktop";
 
 export type InputMode = "touch" | "mouse";
 
+export enum StorageItem {
+  AccessToken = "@ol-accessToken",
+  Username = "@ol-username",
+}
+
 export type AppComponentType = "drawer_panel";
 
 export type AppComponentState = {
@@ -43,6 +50,8 @@ export type AppComponentState = {
 };
 
 export type AppStoreState = {
+  initializing: boolean;
+  initialized: boolean;
   mode: AppMode | undefined;
   inputMode: InputMode;
 
@@ -51,7 +60,7 @@ export type AppStoreState = {
 };
 
 export class AppStore {
-  private static instance: any = null;
+  private static instance: AppStore;
 
   static history: History;
   static location: Location;
@@ -64,11 +73,12 @@ export class AppStore {
 
   mobileBreakpoint = 769; // sm breakpoint
 
-  dataStore = new DataStore();
+  dataStore = DataStore.getInstance();
 
   // STATE
-  @observable
-  state: AppStoreState = {
+  private initialState: AppStoreState = {
+    initializing: false,
+    initialized: false,
     mode: this.evaluateMode(),
     inputMode: "touch",
 
@@ -76,30 +86,63 @@ export class AppStore {
     stateByComponentType: new Map(),
   };
 
+  @observable
+  state: AppStoreState = _.cloneDeep(this.initialState);
+
   private isTouch = false;
   private inputModeTimer: any | undefined;
 
-  constructor() {
-    if (!_.isNil(AppStore.instance)) return AppStore.instance;
+  private constructor() {
+    //
+  }
 
-    AppStore.instance = this;
+  static getInstance(): AppStore {
+    if (!this.instance) this.instance = new AppStore();
+
+    return this.instance;
+  }
+
+  @action
+  async initialize() {
+    const {dataStore, state} = this;
+
+    state.initialized = false;
+    state.initializing = true;
+
+    await dataStore.initialize();
+    await this.dataStore.setLocale(AppConfig.Settings.Localization.defaultLocale);
+
+    runInAction(() => {
+      state.initializing = false;
+      state.initialized = true;
+    });
 
     this.handlerWindowResize = this.handlerWindowResize.bind(this);
     this.handleTouchStart = this.handleTouchStart.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
 
-    window.addEventListener("resize", this.handlerWindowResize);
-
     if (document.documentElement) document.documentElement.setAttribute("data-browser", navigator.userAgent);
 
+    window.addEventListener("resize", this.handlerWindowResize);
     document.addEventListener("touchstart", this.handleTouchStart);
     document.addEventListener("mouseover", this.handleMouseOver);
 
     this.initialConfig = _.cloneDeep(AppConfig);
 
-    this.dataStore.setLocale(AppConfig.Settings.Localization.defaultLocale);
-
     return AppStore.instance;
+  }
+
+  @action
+  async reset() {
+    const {dataStore} = this;
+
+    window.removeEventListener("resize", this.handlerWindowResize);
+    document.removeEventListener("touchstart", this.handleTouchStart);
+    document.removeEventListener("mouseover", this.handleMouseOver);
+
+    await this.cleanStorage();
+    dataStore.reset();
+    this.state = _.cloneDeep(this.initialState);
   }
 
   private handleTouchStart() {
@@ -191,7 +234,7 @@ export class AppStore {
           <span className="ol-message-content">{content}</span>
           {type === "error" && (
             <span className="ol-message-close-icon" onClick={() => this.hideMessage(messageId)}>
-              <Icon type="close" />
+              <CloseIcon />
             </span>
           )}
         </div>
@@ -227,7 +270,7 @@ export class AppStore {
 
   @action
   hideMessage(id: string) {
-    const messageToDeleteIndex = this.state.messageHide.findIndex(mh => mh.id === id);
+    const messageToDeleteIndex = this.state.messageHide.findIndex((mh) => mh.id === id);
 
     if (messageToDeleteIndex >= 0) {
       this.state.messageHide[messageToDeleteIndex].hide();
@@ -245,7 +288,7 @@ export class AppStore {
 
   @action
   hideAllMessages() {
-    this.state.messageHide.forEach(mh => mh.hide());
+    this.state.messageHide.forEach((mh) => mh.hide());
 
     this.state.messageHide = [];
   }
@@ -283,6 +326,22 @@ export class AppStore {
 
     return !_.isNil(component) && component.visible;
   }
-
   // endregion
+
+  async getItem<TItem extends StorageItem>(item: TItem): Promise<string | null> {
+    // TODO: implement
+    return "";
+  }
+
+  async setItem<TItem extends StorageItem>(item: TItem, value: string) {
+    // TODO: implement
+  }
+
+  async deleteItem<TItem extends StorageItem>(item: TItem) {
+    // TODO: implement
+  }
+
+  async cleanStorage() {
+    // TODO: implement
+  }
 }

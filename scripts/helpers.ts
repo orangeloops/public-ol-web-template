@@ -12,5 +12,5 @@ export const runCommand = (command: Command, options?: ExecOptions): Promise<num
     const execCommand = typeof command === "string" ? spawn(command, undefined, options) : spawn(command[0], command[1], options);
 
     if (execCommand.stdout) execCommand.stdout.pipe(process.stdout);
-    execCommand.on("error", reject).on("exit", code => resolve(code || 0));
+    execCommand.on("error", reject).on("exit", (code) => resolve(code || 0));
   });

@@ -13,5 +13,8 @@ module.exports = {
     "no-duplicate-selectors": null,
     "no-empty-source": null,
     "selector-type-no-unknown": null,
+    "selector-pseudo-class-no-unknown": [true, {
+      ignorePseudoClasses: ["global"],
+    }],
   },
 };

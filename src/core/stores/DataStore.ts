@@ -1,10 +1,11 @@
 import * as _ from "lodash";
 import {action, computed, observable, runInAction} from "mobx";
-import * as moment from "moment";
+import moment from "moment";
 import intl, {ReactIntlUniversalOptions} from "react-intl-universal";
 
-import {APIClient} from "../apiclients/rest/APIClient";
-import {FetchUserRequest, FetchUserResponse, SignInRequest, SignInResponse} from "../apiclients/rest/APIClient.types";
+import {GraphQLAPIClient} from "../apiclients/graphql/GraphQLAPIClient";
+import {RefreshTokenRequest, RefreshTokenResponse} from "../apiclients/graphql/GraphQLAPIClient.types";
+import {FetchUserRequest, FetchUserResponse, SignInRequest, SignInResponse} from "../apiclients/graphql/GraphQLAPIClient.types";
 import {AppConfig} from "../AppConfig";
 import {Locale} from "../locales/Locale";
 import * as Models from "../models";
@@ -12,7 +13,7 @@ import {CoreHelper} from "../utils/CoreHelper";
 
 export type AuthenticationState = {
   user?: Models.User;
-  authToken?: string;
+  accessToken?: Models.AccessToken;
   loadingSignIn: boolean;
   loadingUser: boolean;
 };
@@ -32,8 +33,11 @@ export class DataStore {
 
   @observable authenticationState: AuthenticationState = _.cloneDeep(this.authenticationInitialState);
 
-  constructor() {
-    if (!DataStore.instance) DataStore.instance = this;
+  // eslint-disable-next-line
+  private constructor() {}
+
+  static getInstance(): DataStore {
+    if (!DataStore.instance) DataStore.instance = new DataStore();
 
     return DataStore.instance;
   }
@@ -46,6 +50,13 @@ export class DataStore {
   @computed
   get isInitialized(): boolean {
     return this.initialized;
+  }
+
+  @computed
+  get isAccessTokenExpired(): boolean {
+    const {accessToken} = this.authenticationState;
+
+    return !accessToken || moment().add(1, "hour").isSameOrAfter(accessToken.expiresAt, "minutes");
   }
 
   @action
@@ -95,8 +106,8 @@ export class DataStore {
         sameElse: "L",
       },
       relativeTime: {
-        future: text => text,
-        past: text => text,
+        future: (text) => text,
+        past: (text) => text,
         s: `%d ${CoreHelper.formatMessage("Common-second")}`,
         ss: `%d ${CoreHelper.formatMessage("Common-seconds")}`,
         m: `%d ${CoreHelper.formatMessage("Common-minute")}`,
@@ -104,9 +115,9 @@ export class DataStore {
         h: `%d ${CoreHelper.formatMessage("Common-hour")}`,
         hh: `%d ${CoreHelper.formatMessage("Common-hours")}`,
         d: `%d ${CoreHelper.formatMessage("Common-day")}`,
-        dd: value => {
+        dd: (value) => {
           if (value < 7) {
-            return `${value} ${nextLocale.Common.days}`;
+            return `${value} ${CoreHelper.formatMessage("Common-days")}`;
           } else {
             const weeks = Math.round(value / 7);
             return `${weeks} ${weeks > 1 ? CoreHelper.formatMessage("Common-weeks") : CoreHelper.formatMessage("Common-week")}`;
@@ -128,6 +139,11 @@ export class DataStore {
   }
 
   @action
+  setAccessToken(accessToken: Models.AccessToken) {
+    this.authenticationState.accessToken = accessToken;
+  }
+
+  @action
   reset() {
     this.authenticationState = _.cloneDeep(this.authenticationInitialState);
   }
@@ -136,15 +152,12 @@ export class DataStore {
   async signIn(request: SignInRequest): Promise<SignInResponse> {
     this.authenticationState.loadingSignIn = true;
 
-    const response = await APIClient.signIn(request);
+    const response = await GraphQLAPIClient.signIn(request);
 
     runInAction(() => {
       this.authenticationState.loadingSignIn = false;
 
-      if (response.success) {
-        this.authenticationState.user = response.user;
-        this.authenticationState.authToken = response.authToken;
-      }
+      if (response.success) this.authenticationState.accessToken = response.accessToken;
     });
 
     return response;
@@ -154,12 +167,23 @@ export class DataStore {
   async fetchUser(request: FetchUserRequest): Promise<FetchUserResponse> {
     this.authenticationState.loadingUser = true;
 
-    const response = await APIClient.fetchUser(request);
+    const response = await GraphQLAPIClient.fetchUser(request);
 
     runInAction(() => {
       this.authenticationState.loadingUser = false;
 
       if (response.success) this.authenticationState.user = response.user;
+    });
+
+    return response;
+  }
+
+  @action
+  async refreshToken(request: RefreshTokenRequest): Promise<RefreshTokenResponse> {
+    const response = await GraphQLAPIClient.refreshToken(request);
+
+    runInAction(() => {
+      if (response.success) this.setAccessToken(response.accessToken);
     });
 
     return response;

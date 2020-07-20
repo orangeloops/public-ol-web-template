@@ -34,8 +34,9 @@ function cleanPrecompiledFiles() {
     if (regex.test(file.path)) {
       const compiledFile = file.path.replace(regex, ".css");
       const mapFile = file.path.replace(regex, ".css.map");
+      const typeInformation = file.path.replace(regex, ".scss.d.ts");
 
-      del.sync([compiledFile, mapFile], options);
+      del.sync([compiledFile, mapFile, typeInformation], options);
     }
 
     callback();

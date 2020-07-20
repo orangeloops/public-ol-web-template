@@ -3,13 +3,13 @@ import * as React from "react";
 import {select} from "@storybook/addon-knobs";
 import {MockInterface} from "../../__mocks__/MockInterface";
 import {AppProps, App} from "../App";
-import {APIClient} from "../../core/apiclients/rest/APIClient";
+import {GraphQLAPIClient} from "../../core/apiclients/graphql/GraphQLAPIClient";
 import {CoreHelper} from "../../core/utils/CoreHelper";
 import {DataStore} from "../../core/stores/DataStore";
 import {AppStore} from "../stores/AppStore";
 import {en_US} from "../../core/locales/en_US";
 import {es_ES} from "../../core/locales/es_ES";
-import {mockAPIClient} from "../../core/apiclients/rest/__mocks__/APIClient.mock";
+import {createGraphQLAPIClientMock} from "../../core/apiclients/graphql/__mocks__/GraphQLAPIClientMock";
 
 let lastStoryId: string;
 
@@ -19,22 +19,24 @@ export const withApp = (props: AppProps = {}, mockData: MockInterface = {}) => (
 
   CoreHelper.mergeWith(CoreHelper.mergeWith(props.config, mockData.baseConfig), mockData.config);
 
-  APIClient.configureClient({
+  GraphQLAPIClient.configureClient({
     userAgent: "",
+    onRefreshToken: () => {},
+    shouldRefreshToken: () => false,
   });
-  mockAPIClient();
+  createGraphQLAPIClientMock({});
 
   const storyId = `${context.kind}_${context.story}`;
   if (lastStoryId !== storyId) {
     lastStoryId = storyId;
 
-    const dataStore = new DataStore();
+    const dataStore = DataStore.getInstance();
     dataStore.reset();
   }
 
   if (!_.isNil(mockData.initializeStore)) mockData.initializeStore();
 
-  const appStore = new AppStore();
+  const appStore = AppStore.getInstance();
   appStore.setConfig(props.config);
 
   const locales = {en_US, es_ES};

@@ -6,6 +6,7 @@ import {BaseModel} from "./BaseModel";
 export class User extends BaseModel {
   @observable id: string;
   @observable name: string;
+  @observable email: string;
 
   @observable createdAt: moment.Moment;
 

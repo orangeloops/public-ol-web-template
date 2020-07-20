@@ -1,0 +1,4 @@
+{
+  "watch": ["config/stylesheets.config.js"],
+  "exec": "npm run generate:stylesheets:data"
+}

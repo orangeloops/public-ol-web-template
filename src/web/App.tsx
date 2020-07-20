@@ -16,34 +16,26 @@ import "moment-timezone";
 import "../assets/stylesheets/main.scss";
 
 import {ConfigProvider, message} from "antd";
-import {mockAPIClient} from "../core/apiclients/rest/__mocks__/APIClient.mock";
-import {APIClient} from "../core/apiclients/rest/APIClient";
-import {useComputedValue} from "./hooks";
 
 export type AppProps = {
   config?: any;
   locale?: Locale;
 };
 
-APIClient.configureClient({
-  userAgent: "",
-});
-mockAPIClient();
-
-export const App: React.FunctionComponent<AppProps> = observer(props => {
-  const appStore = new AppStore();
-  const dataStore = new DataStore();
+export const App: React.FunctionComponent<AppProps> = observer((props) => {
+  const appStore = AppStore.getInstance();
+  const dataStore = DataStore.getInstance();
   const switchContainerRef = React.useRef<HTMLDivElement>(null);
   const messageContainerRef = React.useRef<HTMLDivElement>(null);
   const prevConfigRef = React.useRef<any>();
   const antd_locale = dataStore.currentLocale ? AppStore.Intl.antd_locales[dataStore.currentLocale.code] : undefined;
 
-  useComputedValue(() => {
+  React.useState(() => {
     message.config({
       getContainer: () => messageContainerRef.current || document.body,
       transitionName: "fade",
     });
-  }, []);
+  });
 
   if (!_.isNil(props.locale) && (!dataStore.currentLocale || props.locale.code !== dataStore.currentLocale.code)) dataStore.setLocale(props.locale);
   if (!_.isNil(props.config) && !_.isEqual(props.config, prevConfigRef.current)) appStore.setConfig(props.config);

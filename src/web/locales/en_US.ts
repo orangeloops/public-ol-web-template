@@ -4,7 +4,7 @@ import {CoreHelper} from "../../core/utils/CoreHelper";
 import {Locale} from "./Locale";
 
 const uiLocale: Omit<Locale, keyof CoreLocale> = {
-  "About-builtBy": "Phoenix is built by",
+  "About-builtBy": "Template is built by",
   "About-title": "About",
   "Common-loadingText": "Loading...",
 };
