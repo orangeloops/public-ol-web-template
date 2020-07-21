@@ -6,11 +6,6 @@ module.exports = {
     variables: {
       "@primary-color": "#4182ce",
       "@font-family": "App, Helvetica, Arial, sans-serif",
-      "@table-header-sort-bg": "white",
-      "@table-body-sort-bg": "white",
-      "@table-expanded-row-bg": "white",
-      "@table-padding-vertical": "10px",
-      "@table-padding-horizontal": "10px",
     },
   },
   sdk: {
@@ -20,7 +15,7 @@ module.exports = {
     options: {},
   },
   postcssLoader: {
-    options: stylelint => ({
+    options: (stylelint) => ({
       // ident: "postcss",
       plugins: () =>
         [
@@ -42,5 +37,12 @@ module.exports = {
           require("postcss-reporter"),
         ].filter(Boolean),
     }),
+  },
+  favicons: {
+    // https://github.com/itgalaxy/favicons#usage
+    appleStatusBarStyle: "#222",
+    background: "#222",
+    theme_color: "#222",
+    icons: {},
   },
 };

@@ -1,42 +1,36 @@
-import * as _ from "lodash";
 import * as React from "react";
-import {BaseComponent} from "../BaseComponent";
 import {observer} from "mobx-react";
-import {boundMethod} from "autobind-decorator";
+import {WebHelper} from "../../utils/WebHelper";
 
 import {Button, Modal} from "antd";
 
 import styles from "./About.module.scss";
 
-type AboutProps = {
+export type AboutProps = {
   onClose?: () => void;
 };
 
-@observer
-export class About extends BaseComponent<AboutProps> {
-  @boundMethod
-  private handleClose() {
-    const {onClose} = this.props;
+export const About: React.FC<AboutProps> = observer((props) => {
+  const {onClose} = props;
 
-    if (!_.isNil(onClose)) onClose();
-  }
+  const handleClose = React.useCallback(() => {
+    if (onClose) onClose();
+  }, [onClose]);
 
-  render() {
-    const footer = (
-      <Button type="primary" onClick={this.handleClose}>
-        {this.formatMessage("Common-ok")}
-      </Button>
-    );
+  const footer = (
+    <Button type="primary" onClick={handleClose}>
+      {WebHelper.formatMessage("Common-ok")}
+    </Button>
+  );
 
-    return (
-      <Modal title={this.formatMessage("About-title")} visible={true} width={300} footer={footer} onCancel={this.handleClose}>
-        <div className={styles.container}>
-          <div className={styles.companyContainer}>
-            <div className={styles.text + " " + styles.bold}>{this.formatMessage("About-builtBy")}</div>
-            <div className={styles.companyIcon} />
-          </div>
+  return (
+    <Modal title={WebHelper.formatMessage("About-title")} visible={true} width={300} footer={footer} onCancel={handleClose}>
+      <div className={styles.container}>
+        <div className={styles.companyContainer}>
+          <div className={styles.text + " " + styles.bold}>{WebHelper.formatMessage("About-builtBy")}</div>
+          <div className={styles.companyIcon} />
         </div>
-      </Modal>
-    );
-  }
-}
+      </div>
+    </Modal>
+  );
+});

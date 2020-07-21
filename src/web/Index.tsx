@@ -1,14 +1,27 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-import {App} from "./App";
+import {start} from "./App";
 import {AppConfig} from "./AppConfig";
-import {APIClient} from "../core/apiclients/rest/APIClient";
-import {mockAPIClient} from "../core/apiclients/rest/__mocks__/APIClient.mock";
+import {GraphQLAPIClient} from "../core/apiclients/graphql/GraphQLAPIClient";
+import {DataStore} from "../core/stores/DataStore";
 
-APIClient.configureClient({
-  userAgent: "",
-});
-mockAPIClient();
+if (process.env.IS_SERVER_MOCKED === "true") {
+  const {createGraphQLAPIClientMock} = require("../core/apiclients/graphql/__mocks__/GraphQLAPIClientMock");
+  const {userDefault} = require("../core/apiclients/graphql/__mocks__/User.mock");
 
-App.start({config: AppConfig});
+  createGraphQLAPIClientMock({initialMockedData: {users: [userDefault]}});
+} else
+  GraphQLAPIClient.configureClient({
+    userAgent: navigator.userAgent,
+    shouldRefreshToken: () => false,
+    onRefreshToken: (accessToken) => {
+      const dataStore = DataStore.getInstance();
+
+      Object.keys(accessToken).forEach((k) => {
+        dataStore.authenticationState.accessToken![k] = accessToken[k];
+      });
+    },
+  });
+
+start({config: AppConfig});

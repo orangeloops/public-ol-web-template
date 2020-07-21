@@ -1,5 +1,6 @@
 build
 .storybook_build
+config/vendors/
 node_modules/
 src/**/__snapshots__/
 package.json

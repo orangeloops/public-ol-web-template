@@ -42,7 +42,6 @@ module.exports = function(api) {
       },
     ],
     "@babel/plugin-proposal-optional-catch-binding",
-    "@babel/plugin-proposal-optional-chaining",
     "@babel/plugin-syntax-dynamic-import",
     "lodash",
   ];

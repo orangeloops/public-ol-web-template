@@ -1,2 +1,3 @@
 build/*
+config/vendors/*
 node_modules/*

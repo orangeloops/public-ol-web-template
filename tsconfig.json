@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es5",
-    "lib": ["esnext", "dom"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "sourceMap": true,
     "allowJs": false,
     "moduleResolution": "node",
@@ -10,7 +10,7 @@
     "paths": {
       "assets/*": ["assets/*"]
     },
-    "jsx": "preserve",
+    "jsx": "react",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -30,14 +30,8 @@
     "skipLibCheck": true,
     "traceResolution": false,
     "noEmit": true,
-    "esModuleInterop": true,
-    "incremental": true,
-    "tsBuildInfoFile": "./node_modules/.cache/typescript"
+    "esModuleInterop": true
   },
-  "include": [
-    "typings/**/*",
-    "src/**/*",
-    "node_modules/@types/jest/index.d.ts"
-  ],
+  "include": ["typings/**/*", "src/**/*", "node_modules/@types/jest/index.d.ts"],
   "exclude": [".storybook", ".storybook_build", ".vscode", "build", "config", "node_modules", "public", "scripts"]
 }
